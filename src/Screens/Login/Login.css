@@ -1,0 +1,9 @@
+body {
+  background-color: #1F91FB;
+}
+
+.infoError{
+    color: red;
+    font-size: 11px;
+    text-align: center;
+}
