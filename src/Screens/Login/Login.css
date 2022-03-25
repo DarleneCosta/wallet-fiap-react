@@ -1,9 +1,13 @@
 body {
-  background-color: #1F91FB;
+  background-color: #1f91fb;
 }
 
-.infoError{
-    color: red;
-    font-size: 11px;
-    text-align: center;
+.infoError {
+  color: red;
+  font-size: 11px;
+  text-align: center;
+}
+
+.input {
+  width: 100%;
 }
