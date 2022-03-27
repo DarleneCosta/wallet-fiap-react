@@ -1,0 +1,28 @@
+version: '3.0'
+services:
+      db:
+        image: postgres
+        container_name: postgrescontainer
+        restart: always
+        environment:
+            - POSTGRES_PASSWORD=admin
+            - POSTGRES_USER=root
+            - POSTGRES_DB=wallet
+        volumes:
+          - db
+        networks:
+         - wallet_network
+      api:
+        container_name: api
+        depends_on: 
+         - db
+        image: jvitoralmeida/walletimage:1.0.11
+        networks:
+         - wallet_network
+        ports:
+          - 8080:8787
+        
+volumes:
+    db:
+networks:
+  wallet_network:
