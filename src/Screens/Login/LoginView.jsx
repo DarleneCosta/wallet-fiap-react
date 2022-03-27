@@ -28,14 +28,8 @@ const LoginView = (props) => {
 				const { setFieldValue } = formik;
 				return (
 					<Form>
-						<Grid container justifyContent="center" alignItems="center">
-							<Grid
-								item
-								xs={12}
-								sm={9}
-								md={3}
-								marginTop={20}
-							>
+						<Grid container justifyContent="center" alignItems="center" marginTop={10}>
+							<Grid item xs={12} sm={6} md={3}>
 								<Card>
 									<CardActionArea noValidate>
 										<CardContent>
