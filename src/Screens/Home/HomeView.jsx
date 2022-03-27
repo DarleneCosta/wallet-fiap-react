@@ -3,6 +3,7 @@ import React from 'react';
 import {
 	Avatar,
 	Box,
+	Card,
 	CardContent,
 	CircularProgress,
 	Divider,
@@ -12,6 +13,7 @@ import {
 import loginImg from '../../Assets/img_login_new.png';
 
 import DialogDelete from '../../Components/DialogDelete/DialogDelete.jsx';
+import AppBar from '../../Components/AppBar.jsx';
 // assets
 
 import './Home.css';
@@ -27,6 +29,7 @@ const HomeView = () => {
 				</Grid>
 			) : (
 				<>
+					<AppBar />
 					<Box // sx={{ display: { xs: 'block', md: 'block' } }}
 						display="block"
 					>
@@ -46,9 +49,8 @@ const HomeView = () => {
 
 					<Box className="store">
 						<CardContent>
-							<Divider sx={{ my: 1.5 }} />
 							{[1, 2, 3].map((value) => (
-								<Grid container key={value}>
+								<Card container key={value} className="item-store">
 									<Grid item xs={12}>
 										<Grid container direction="column">
 											<Grid item>
@@ -58,13 +60,13 @@ const HomeView = () => {
 													justifyContent="flex-start"
 													alignItems="center"
 												>
-													<Grid item md={2} paddingLeft={2}>
+													<Grid item xs={2} md={2} paddingLeft={2}>
 														<Avatar
 															variant="rounded"
 															src={loginImg}
 														></Avatar>
 													</Grid>
-													<Grid item md={4}>
+													<Grid item xs={4} md={4}>
 														<Typography
 															variant="subtitle1"
 															color="inherit"
@@ -72,7 +74,7 @@ const HomeView = () => {
 															Bajaj Finery {value}
 														</Typography>
 													</Grid>
-													<Grid item md={5}>
+													<Grid item xs={5} md={5}>
 														<Grid
 															container
 															alignItems="center"
@@ -94,9 +96,10 @@ const HomeView = () => {
 												</Grid>
 											</Grid>
 										</Grid>
-										<Divider sx={{ my: 1.5 }} />
+
+										{/* <Divider sx={{ my: 1.5 }} /> */}
 									</Grid>
-								</Grid>
+								</Card>
 							))}
 						</CardContent>
 					</Box>
