@@ -2,25 +2,17 @@ import React from 'react';
 
 import {
 	Avatar,
-	Button,
 	Box,
-	Card,
-	CardActions,
 	CardContent,
 	CircularProgress,
-	Container,
 	Divider,
 	Grid,
-	Menu,
-	MenuItem,
 	Typography
 } from '@mui/material';
 import loginImg from '../../Assets/img_login_new.png';
-// assets
 
-import ClearIcon from '@mui/icons-material/Clear';
-import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
-import { deepOrange, deepPurple } from '@mui/material/colors';
+import DialogDelete from '../../Components/DialogDelete/DialogDelete.jsx';
+// assets
 
 import './Home.css';
 
@@ -45,7 +37,7 @@ const HomeView = () => {
 							justifyContent="space-between"
 						>
 							<Grid item>
-								<Typography variant="h4" color="white" marginLeft={3}>
+								<Typography variant="h5" color="white" marginLeft={3}>
 									Minhas lojas favoritas
 								</Typography>
 							</Grid>
@@ -66,7 +58,6 @@ const HomeView = () => {
 													justifyContent="flex-start"
 													alignItems="center"
 												>
-													
 													<Grid item md={2} paddingLeft={2}>
 														<Avatar
 															variant="rounded"
@@ -98,21 +89,7 @@ const HomeView = () => {
 														</Grid>
 													</Grid>
 													<Grid item md={1}>
-														<Avatar
-															variant="rounded"
-															sx={{
-																width: 16,
-																height: 16,
-																borderRadius: '5px',
-																bgcolor: deepOrange[500],
-																ml: 2
-															}}
-														>
-															<ClearIcon
-																fontSize="small"
-																color="inherit"
-															/>
-														</Avatar>
+														<DialogDelete />
 													</Grid>
 												</Grid>
 											</Grid>
