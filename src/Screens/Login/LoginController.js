@@ -9,7 +9,7 @@ import login from '../../Services/APIs/Login/Login';
 const LoginController = () => {
 	const [infoLogin] = useState('');
 	const navigate = useNavigate();
-	const loginApi = useAPI(login.logar);
+	const logInto = useAPI(login.logInto);
 
 	const signInSchema = Yup.object().shape({
 		cpf: Yup.string()
@@ -21,26 +21,32 @@ const LoginController = () => {
 	});
 
 	const onSubmit = (values) => {
-		navigate('Home', {
-			state: {
-				info: JSON.stringify(values)
-			}
-		});
-		// return new Promise((resolve, reject) => {
-		// 	loginApi
-		// 		.requestPromise(values)
-		// 		.then((info) => {
-		// 			console.log(info); //todo:gravar o token
+		return new Promise((resolve, reject) => {
+			logInto
+				.requestPromise(values)
+				.then((info) => {
+					console.log(info); //todo:gravar o token
 
-		// 			resolve(info);
-		// 		})
-		// 		.catch((error) => {
-		// 			console.log(error);
-		// 		});
-		// });
+					navigate('Home', {
+						state: {
+							info: JSON.stringify(info)
+						}
+					});
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		});
 	};
 
-	return <LoginView signInSchema={signInSchema} onSubmit={onSubmit} infoLogin={infoLogin} />;
+	return (
+		<LoginView
+			loading={logInto.loading}
+			signInSchema={signInSchema}
+			onSubmit={onSubmit}
+			infoLogin={infoLogin}
+		/>
+	);
 };
 
 export default LoginController;

@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+	Alert,
 	Button,
 	Box,
 	Card,
@@ -14,9 +15,23 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import './Login.css';
 import loginImg from '../../Assets/img_login_new.png';
 
-
 const LoginView = (props) => {
+	let message = null;
+	console.log(props.connectMessage);
+	if (props.connectMessage !== '') {
+		let severity = 'success';
+		if (props.connectCode !== 1) {
+			severity = 'error';
+		}
+		message = (
+			<Alert severity={severity} variant="filled">
+				{' '}
+				{props.connectMessage}{' '}
+			</Alert>
+		);
+	}
 	return (
+		
 		<Formik
 			initialValues={{
 				cpf: '',
@@ -75,7 +90,7 @@ const LoginView = (props) => {
 												className="infoError"
 											/>
 										</CardContent>
-
+										{message}
 										<CardActions className="actions">
 											<Button variant="contained" type="submit">
 												Entrar

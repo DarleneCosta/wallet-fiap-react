@@ -12,8 +12,8 @@ import {
 } from '@mui/material';
 import loginImg from '../../Assets/img_login_new.png';
 
-import DialogDelete from '../../Components/DialogDelete/DialogDelete.jsx';
-import AppBar from '../../Components/AppBar.jsx';
+import DialogDelete from '../../Components/DialogDelete/DialogDelete.js';
+import AppBar from '../../Components/AppBar.js';
 // assets
 
 import './Home.css';

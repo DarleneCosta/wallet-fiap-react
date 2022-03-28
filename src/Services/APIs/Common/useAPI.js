@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+/* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default (apiFunc) => {
 	const [data, setData] = useState(null);
 	const [error, setError] = useState('');
