@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './Home.css';
 import walletImage from '../../Assets/wallet2.png';
 
 const HomeView = () => {
+	const navigate = useNavigate();
+
 	return (
 		<div className="h-screen flex flex-col xl:flex-row">
 			<div
@@ -23,10 +26,16 @@ const HomeView = () => {
 				id="Buttons"
 				className="bg-slate-200 h-1/4 flex justify-center items-center flex-col xl:h-screen xl:w-2/4"
 			>
-				<button className="w-3/4 bg-white rounded-xl h-10 text-xl font-medium mb-6 xl:h-16 xl:font-normal xl:text-xl">
+				<button
+					onClick={() => navigate('/Login')}
+					className="w-3/4 bg-white rounded-xl h-10 text-xl font-medium mb-6 xl:h-16 xl:font-normal xl:text-xl"
+				>
 					Já sou cadastrado
 				</button>
-				<button className="w-3/4 bg-yellow-500 rounded-xl text-xl font-semibold text-white h-10 xl:font-bold xl:text-xl xl:h-16">
+				<button
+					onClick={() => navigate('/SignUp')}
+					className="w-3/4 bg-yellow-500 rounded-xl text-xl font-semibold text-white h-10 xl:font-bold xl:text-xl xl:h-16"
+				>
 					Quero me cadastrar
 				</button>
 			</div>
