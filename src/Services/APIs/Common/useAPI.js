@@ -20,6 +20,7 @@ export default (apiFunc) => {
 
 	const requestPromise = async (...args) => {
 		return new Promise((resolve, reject) => {
+			setLoading(true);
 			try {
 				console.log(args);
 				apiFunc(...args)
@@ -33,6 +34,8 @@ export default (apiFunc) => {
 					});
 			} catch (err) {
 				reject(err.message || 'Unexpected Error!');
+			} finally {
+				setLoading(false);
 			}
 		});
 	};

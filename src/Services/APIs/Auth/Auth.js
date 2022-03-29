@@ -1,7 +1,7 @@
 import api from '../Common/api';
 
-const logInto = (data) => api.post('/login', data);
+const signIn = (data) => api.post('/login', data);
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
-	logInto
+	 signIn
 };

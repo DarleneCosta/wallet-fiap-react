@@ -4,12 +4,13 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
 import useAPI from '../../Services/APIs/Common/useAPI';
-import login from '../../Services/APIs/Login/Login';
+import auth from '../../Services/APIs/Auth/Auth';
 
 const LoginController = () => {
+	const [connectMessage, setConnectMessage] = useState('');
 	const [infoLogin] = useState('');
 	const navigate = useNavigate();
-	const logInto = useAPI(login.logInto);
+	const logInto = useAPI(auth.signIn);
 
 	const signInSchema = Yup.object().shape({
 		cpf: Yup.string()
@@ -34,7 +35,7 @@ const LoginController = () => {
 					});
 				})
 				.catch((error) => {
-					console.log(error);
+					setConnectMessage(error.toString());
 				});
 		});
 	};
@@ -45,6 +46,7 @@ const LoginController = () => {
 			signInSchema={signInSchema}
 			onSubmit={onSubmit}
 			infoLogin={infoLogin}
+			connectMessage={connectMessage}
 		/>
 	);
 };
