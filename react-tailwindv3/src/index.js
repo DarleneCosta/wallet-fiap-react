@@ -1,18 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MuiThemes from './Utils/Common/MuiThemes';
+import './index.css';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Router from './Routes/routes';
-import { BrowserRouter } from 'react-router-dom';
-import './styles/index.css';
 
 ReactDOM.render(
-	<BrowserRouter>
-		<MuiThemes>
-			<Router />
-		</MuiThemes>
-	</BrowserRouter>,
-	document.getElementById('root')
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

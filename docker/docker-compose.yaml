@@ -9,7 +9,7 @@ services:
             - POSTGRES_USER=root
             - POSTGRES_DB=wallet
         volumes:
-          - db
+          - db:/src/database
         networks:
          - wallet_network
       api:
