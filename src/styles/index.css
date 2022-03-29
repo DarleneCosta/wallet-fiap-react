@@ -17,3 +17,7 @@ body {
 	background-attachment: fixed;
 	background: linear-gradient(to bottom right, darkBlue, #1f91fb);
 }
+
+#root {
+	height: 100%;
+}

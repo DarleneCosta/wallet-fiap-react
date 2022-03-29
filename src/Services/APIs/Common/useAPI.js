@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+/* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default (apiFunc) => {
 	const [data, setData] = useState(null);
 	const [error, setError] = useState('');
@@ -19,6 +20,7 @@ export default (apiFunc) => {
 
 	const requestPromise = async (...args) => {
 		return new Promise((resolve, reject) => {
+			setLoading(true);
 			try {
 				console.log(args);
 				apiFunc(...args)
@@ -32,6 +34,8 @@ export default (apiFunc) => {
 					});
 			} catch (err) {
 				reject(err.message || 'Unexpected Error!');
+			} finally {
+				setLoading(false);
 			}
 		});
 	};

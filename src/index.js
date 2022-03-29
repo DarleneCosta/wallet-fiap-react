@@ -6,16 +6,16 @@ import Router from './Routes/routes';
 import { BrowserRouter } from 'react-router-dom';
 import './styles/index.css';
 
+import AuthContext from './Contexts/Auth';
+
 ReactDOM.render(
 	<BrowserRouter>
 		<MuiThemes>
-			<Router />
+			<AuthContext.Provider>
+				<Router />
+			</AuthContext.Provider>
 		</MuiThemes>
 	</BrowserRouter>,
 	document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

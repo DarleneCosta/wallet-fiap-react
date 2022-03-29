@@ -4,12 +4,13 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
 import useAPI from '../../Services/APIs/Common/useAPI';
-import login from '../../Services/APIs/Login/Login';
+import auth from '../../Services/APIs/Auth/Auth';
 
 const LoginController = () => {
+	const [connectMessage, setConnectMessage] = useState('');
 	const [infoLogin] = useState('');
 	const navigate = useNavigate();
-	const loginApi = useAPI(login.logar);
+	const logInto = useAPI(auth.signIn);
 
 	const signInSchema = Yup.object().shape({
 		cpf: Yup.string()
@@ -21,26 +22,33 @@ const LoginController = () => {
 	});
 
 	const onSubmit = (values) => {
-		navigate('Home', {
-			state: {
-				info: JSON.stringify(values)
-			}
-		});
-		// return new Promise((resolve, reject) => {
-		// 	loginApi
-		// 		.requestPromise(values)
-		// 		.then((info) => {
-		// 			console.log(info); //todo:gravar o token
+		return new Promise((resolve, reject) => {
+			logInto
+				.requestPromise(values)
+				.then((info) => {
+					console.log(info); //todo:gravar o token
 
-		// 			resolve(info);
-		// 		})
-		// 		.catch((error) => {
-		// 			console.log(error);
-		// 		});
-		// });
+					navigate('Home', {
+						state: {
+							info: JSON.stringify(info)
+						}
+					});
+				})
+				.catch((error) => {
+					setConnectMessage(error.toString());
+				});
+		});
 	};
 
-	return <LoginView signInSchema={signInSchema} onSubmit={onSubmit} infoLogin={infoLogin} />;
+	return (
+		<LoginView
+			loading={logInto.loading}
+			signInSchema={signInSchema}
+			onSubmit={onSubmit}
+			infoLogin={infoLogin}
+			connectMessage={connectMessage}
+		/>
+	);
 };
 
 export default LoginController;
