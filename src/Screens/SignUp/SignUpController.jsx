@@ -1,10 +1,15 @@
-import React from 'react'
-import SignUpView from './SignUpView'
+import React from 'react';
+import ApiConn from '../../Services/APIs/Common/api';
+import SignUpView from './SignUpView';
 
 const SignUpController = () => {
-  return (
-    <SignUpView/>
-  )
-}
+	const doSignUp = (signUpObject) => {
+		ApiConn.post('user/signup', signUpObject)
+			.then((res) => console.log(res))
+			.catch((err) => console.log(err));
+	};
 
-export default SignUpController
+	return <SignUpView signUpFunction={doSignUp} />;
+};
+
+export default SignUpController;
