@@ -28,7 +28,7 @@ const LoginController = () => {
 				.then((info) => {
 					console.log(info); //todo:gravar o token
 
-					navigate('Home', {
+					navigate('Wallet', {
 						state: {
 							info: JSON.stringify(info)
 						}

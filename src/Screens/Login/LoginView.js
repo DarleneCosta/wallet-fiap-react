@@ -1,4 +1,5 @@
-//import { useState } from 'react';
+import { useContext } from 'react';
+import AuthContext from '../../Contexts/Auth';
 import {
 	Alert,
 	Button,
