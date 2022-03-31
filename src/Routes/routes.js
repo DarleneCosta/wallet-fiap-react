@@ -1,17 +1,17 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import LoginController from '../Screens/Login/LoginController';
-import DashboardController from '../Screens/Dashboard/DashboardController';
-import Home from '../Screens/Home/Home';
-import SignUpController from '../Screens/SignUp/SignUpController';
+import SignIn from '../Screens/SignIn/SignInController';
+import Dashboard from '../Screens/Dashboard/DashboardController';
+import Home from '../Screens/Home/HomeController';
+import SignUp from '../Screens/SignUp/SignUpController';
 
 const routes = () => {
 	return (
 		<Routes>
 			<Route path="/" element={<Home />} />
-			<Route path="/Wallet" element={<DashboardController />} />
-			<Route path="/Login" element={<LoginController />} />
-			<Route path="/SignUp" element={<SignUpController />} />
+			<Route path="/Wallet" element={<Dashboard />} />
+			<Route path="/Login" element={<SignIn />} />
+			<Route path="/SignUp" element={<SignUp />} />
 		</Routes>
 	);
 };

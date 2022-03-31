@@ -10,7 +10,7 @@ import {
 	Grid,
 	Typography
 } from '@mui/material';
-import loginImg from '../../Assets/img_login_new.png';
+import SignInImg from '../../Assets/img_login_new.png';
 
 import DialogRemove from '../../Components/DialogRemove/DialogRemove';
 import AppBar from '../../Components/AppBar.js';
@@ -63,7 +63,7 @@ const HomeView = () => {
 													<Grid item xs={2} md={2} paddingLeft={2}>
 														<Avatar
 															variant="rounded"
-															src={loginImg}
+															src={SignInImg}
 														></Avatar>
 													</Grid>
 													<Grid item xs={4} md={4}>

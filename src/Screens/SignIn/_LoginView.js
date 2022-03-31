@@ -12,10 +12,10 @@ import {
 	CardContent
 } from '@mui/material';
 import { Formik, Form, ErrorMessage } from 'formik';
-import './Login.css';
-import loginImg from '../../Assets/img_login_new.png';
+import './SignIn.css';
+import SignInImg from '../../Assets/img_SignIn_new.png';
 
-const LoginView = ({ connectMessage, loading, signInSchema, onSubmit }) => {
+const SignInView = ({ connectMessage, loading, signInSchema, onSubmit }) => {
 	let message = null;
 	if (!!connectMessage) {
 		message = (
@@ -49,7 +49,7 @@ const LoginView = ({ connectMessage, loading, signInSchema, onSubmit }) => {
 					{(formik) => {
 						const { setFieldValue } = formik;
 						return (
-							<Form className="formLogin">
+							<Form className="formSignIn">
 								<Grid
 									height="100%"
 									container
@@ -62,7 +62,7 @@ const LoginView = ({ connectMessage, loading, signInSchema, onSubmit }) => {
 												<CardContent>
 													<img
 														className="img"
-														src={loginImg}
+														src={SignInImg}
 														width="60%"
 														height="auto"
 														alt="imagem com usuario e asteriscos abaixo"
@@ -123,4 +123,4 @@ const LoginView = ({ connectMessage, loading, signInSchema, onSubmit }) => {
 	);
 };
 
-export default LoginView;
+export default SignInView;

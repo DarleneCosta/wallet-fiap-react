@@ -15,7 +15,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	/* background: linear-gradient(180deg, rgba(255, 191, 164, 0.12) 0%, rgba(255, 169, 164, 0) 67.06%), linear-gradient(0deg, rgba(255, 243, 242, 0.2), rgba(255, 243, 242, 0.2)), #FFFFFF; */
 	background-attachment: fixed;
-	background: linear-gradient(to bottom right, darkBlue, #1f91fb);
+	/* background: linear-gradient(to bottom right, darkBlue, #1f91fb); */
 }
 
 #root {

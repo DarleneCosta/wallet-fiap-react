@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import LoginView from './LoginView';
+import SignInView from './SignInView';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
 import useAPI from '../../Services/APIs/Common/useAPI';
 import auth from '../../Services/APIs/Auth/Auth';
 
-const LoginController = () => {
+const SignInController = () => {
 	const [connectMessage, setConnectMessage] = useState('');
-	const [infoLogin] = useState('');
+	const [infoSignIn] = useState('');
 	const navigate = useNavigate();
-	const logInto = useAPI(auth.signIn);
+	const SignInto = useAPI(auth.signIn);
 
 	const signInSchema = Yup.object().shape({
 		cpf: Yup.string()
@@ -23,8 +23,7 @@ const LoginController = () => {
 
 	const onSubmit = (values) => {
 		return new Promise((resolve, reject) => {
-			logInto
-				.requestPromise(values)
+			SignInto.requestPromise(values)
 				.then((info) => {
 					console.log(info); //todo:gravar o token
 
@@ -41,14 +40,14 @@ const LoginController = () => {
 	};
 
 	return (
-		<LoginView
-			loading={logInto.loading}
+		<SignInView
+			loading={SignInto.loading}
 			signInSchema={signInSchema}
 			onSubmit={onSubmit}
-			infoLogin={infoLogin}
+			infoSignIn={infoSignIn}
 			connectMessage={connectMessage}
 		/>
 	);
 };
 
-export default LoginController;
+export default SignInController;
