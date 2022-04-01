@@ -27,7 +27,7 @@ const HomeView = () => {
 				className="bg-slate-200 h-1/4 flex justify-center items-center flex-col xl:h-screen xl:w-2/4"
 			>
 				<button
-					onClick={() => navigate('/Login')}
+					onClick={() => navigate('/SignIn')}
 					className="w-3/4 bg-white rounded-xl h-10 text-xl font-medium mb-6 xl:h-16 xl:font-normal xl:text-xl"
 				>
 					Já sou cadastrado

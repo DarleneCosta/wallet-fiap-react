@@ -9,13 +9,13 @@ import {
 	Grid,
 	Typography
 } from '@mui/material';
-import loginImg from '../../Assets/img_login_new.png';
+import SignInImg from '../../Assets/img_login_new.png';
 
-import DialogDelete from '../../Components/DialogDelete/DialogDelete.js';
+import DialogRemove from '../../Components/DialogRemove/DialogRemove';
 import AppBar from '../../Components/AppBar.js';
 // assets
 
-import './Home.css';
+import './Dashboard.css';
 
 const HomeView = () => {
 	const isLoading = false;
@@ -62,7 +62,7 @@ const HomeView = () => {
 													<Grid item xs={2} md={2} paddingLeft={2}>
 														<Avatar
 															variant="rounded"
-															src={loginImg}
+															src={SignInImg}
 														></Avatar>
 													</Grid>
 													<Grid item xs={4} md={4}>
@@ -90,7 +90,7 @@ const HomeView = () => {
 														</Grid>
 													</Grid>
 													<Grid item md={1}>
-														<DialogDelete />
+														<DialogRemove />
 													</Grid>
 												</Grid>
 											</Grid>

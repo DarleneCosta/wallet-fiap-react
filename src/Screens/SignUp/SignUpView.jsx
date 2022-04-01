@@ -42,11 +42,11 @@ const SignUpView = ({ signUpFunction }) => {
 				</div>
 				<div
 					id="form"
-					className="w-screen h-screen flex flex-col justify-center  content-center"
+					className="w-screen h-screen flex flex-col justify-center content-center"
 				>
 					<form
 						onSubmit={handleSubmit}
-						className=" flex flex-col justify-center items-center space-y-16 xl:space-y-20"
+						className="flex flex-col justify-center items-center space-y-16 xl:space-y-20"
 					>
 						<input
 							className="w-3/4 h-8 bg-transparent rounded-none border-b-2 border-zinc-700 focus:outline-none placeholder:font-semibold placeholder:text-zinc-600"
