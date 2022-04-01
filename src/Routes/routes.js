@@ -9,7 +9,6 @@ const routes = () => {
 	return (
 		<Routes>
 			<Route path="/" element={<Home />} />
-			<Route path="/Wallet" element={<HomeController />} />
 			<Route path="/Login" element={<LoginController />} />
 			<Route path="/SignUp" element={<SignUpController />} />
 		</Routes>

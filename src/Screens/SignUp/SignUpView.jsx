@@ -12,6 +12,13 @@ const SignUpView = ({ signUpFunction }) => {
 	const [cellphone, setCellphone] = useState('');
 
 	const handleSubmit = (event) => {
+		console.log({
+			name,
+			email,
+			cpf,
+			cellphone,
+			password
+		})
 		signUpFunction({
 			name,
 			email,
@@ -25,7 +32,7 @@ const SignUpView = ({ signUpFunction }) => {
 
 	return (
 		<>
-			<div className="h-screen bg-gray-200 flex flex-col xl:flex-row xl:items-center">
+			<div className="h-screen bg-gray-200 flex flex-col xl:flex-row-reverse xl:items-center">
 				<div id="logo" className="flex justify-center content-center ">
 					<img
 						className="w-40 h-40 mt-12 rounded-full xl:w-screen xl:h-screen xl:rounded-none xl:mt-0 xl:shadow-2xl"
