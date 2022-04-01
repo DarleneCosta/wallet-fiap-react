@@ -18,7 +18,7 @@ const SignUpView = ({ signUpFunction }) => {
 			cpf,
 			cellphone,
 			password
-		})
+		});
 		signUpFunction({
 			name,
 			email,

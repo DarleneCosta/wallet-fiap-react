@@ -1,14 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import {
-	Avatar,
-	Box,
-	Card,
-	CardContent,
-	CircularProgress,
-	Grid,
-	Typography
-} from '@mui/material';
+import { Avatar, Box, Card, CardContent, CircularProgress, Grid, Typography } from '@mui/material';
 import SignInImg from '../../Assets/img_login_new.png';
 
 import DialogRemove from '../../Components/DialogRemove/DialogRemove';
@@ -16,8 +8,17 @@ import AppBar from '../../Components/AppBar.js';
 // assets
 
 import './Dashboard.css';
+import { useNavigate } from 'react-router-dom';
 
-const HomeView = () => {
+const HomeView = ({ userIsLogged }) => {
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (!userIsLogged) {
+			navigate('/');
+		}
+	}, []);
+
 	const isLoading = false;
 
 	return (
