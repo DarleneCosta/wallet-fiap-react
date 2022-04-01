@@ -15,29 +15,12 @@ const SignInController = () => {
 
 	const signInSchema = Yup.object().shape({
 		cpf: Yup.string()
-			.required('CPF é obrigatório')
-			.length(11, 'CPF são obrigatóriamente 11 dígitos'),
+			.length(11, 'CPF são obrigatóriamente 11 dígitos')
+			.required('CPF é obrigatório'),
 		password: Yup.string()
-			.required('Senha é obrigatória')
 			.min(4, 'Senha é muito pequena - tamanho mínimo 4 dígitos')
+			.required('Senha é obrigatória')
 	});
-
-	const onSubmit = (values) => {
-		// return new Promise((resolve, reject) => {
-		// 	SignInto.requestPromise(values)
-		// 		.then((info) => {
-		// 			console.log(info); //todo:gravar o token
-		// 			navigate('Wallet', {
-		// 				state: {
-		// 					info: JSON.stringify(info)
-		// 				}
-		// 			});
-		// 		})
-		// 		.catch((error) => {
-		// 			setConnectMessage(error.toString());
-		// 		});
-		// });
-	};
 
 	const makeLogin = (userObject) => {
 		ApiConn.post('/api/login', userObject)
@@ -54,7 +37,6 @@ const SignInController = () => {
 		<SignInView
 			loading={SignInto.loading}
 			signInSchema={signInSchema}
-			onSubmit={onSubmit}
 			infoSignIn={infoSignIn}
 			connectMessage={connectMessage}
 			makeLogin={makeLogin}
