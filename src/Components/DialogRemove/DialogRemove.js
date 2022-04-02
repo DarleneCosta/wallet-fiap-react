@@ -2,7 +2,7 @@ import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { ExclamationIcon, XIcon } from '@heroicons/react/outline';
 
-export default function Example() {
+export default function Confirm() {
 	const [open, setOpen] = useState(false);
 
 	const cancelButtonRef = useRef(null);

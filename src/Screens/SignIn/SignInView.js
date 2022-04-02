@@ -4,10 +4,12 @@ import { useState } from 'react';
 import background from '../../Assets/login.jpg';
 import loginImage from '../../Assets/img_login_.png';
 import { WindowSharp } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+
 const SignInView = ({ signInSchema, makeLogin }) => {
 	const [cpf, setCpf] = useState('');
 	const [password, setPassword] = useState('');
-
+	const navigate = useNavigate();
 	const handleSubmit = (event) => {
 		makeLogin({ cpf, password });
 
@@ -82,6 +84,16 @@ const SignInView = ({ signInSchema, makeLogin }) => {
 								>
 									Fazer Login
 								</button>
+								<div className="flex items-center justify-center">
+									<div className="text-sm">
+										<p
+											onClick={() => navigate('/SignUp')}
+											className="font-medium text-black hover:text-blue-700"
+										>
+											Não tem conta? Cadastre-se
+										</p>
+									</div>
+								</div>
 							</Form>
 						)}
 					</Formik>
