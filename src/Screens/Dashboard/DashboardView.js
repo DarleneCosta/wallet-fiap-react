@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { Avatar, Box, Card, CardContent, CircularProgress, Grid, Typography } from '@mui/material';
 import SignInImg from '../../Assets/img_login_new.png';
-
+import { XIcon } from '@heroicons/react/outline';
 import DialogRemove from '../../Components/DialogRemove/DialogRemove';
 import AppBar from '../../Components/AppBar/AppBar.js';
 // assets
@@ -13,11 +13,11 @@ import { useNavigate } from 'react-router-dom';
 const HomeView = ({ userIsLogged }) => {
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		if (!userIsLogged) {
-			navigate('/');
-		}
-	}, []);
+	// useEffect(() => {
+	// 	if (!userIsLogged) {
+	// 		navigate('/');
+	// 	}
+	// }, []);
 
 	const isLoading = false;
 
@@ -47,62 +47,34 @@ const HomeView = ({ userIsLogged }) => {
 						</Grid>
 					</Box>
 
-					<Box className="store">
-						<CardContent>
+					<div class="container w-auto flex flex-col mx-8 my-3  justify-center">
+						<ul class="flex flex-col">
 							{[1, 2, 3].map((value) => (
-								<Card container key={value} className="item-store">
-									<Grid item xs={12}>
-										<Grid container direction="column">
-											<Grid item>
-												<Grid
-													container
-													direction="row"
-													justifyContent="flex-start"
-													alignItems="center"
-												>
-													<Grid item xs={2} md={2} paddingLeft={2}>
-														<Avatar
-															variant="rounded"
-															src={SignInImg}
-														></Avatar>
-													</Grid>
-													<Grid item xs={4} md={4}>
-														<Typography
-															variant="subtitle1"
-															color="inherit"
-														>
-															Bajaj Finery {value}
-														</Typography>
-													</Grid>
-													<Grid item xs={5} md={5}>
-														<Grid
-															container
-															alignItems="center"
-															justifyContent="space-between"
-														>
-															<Grid item>
-																<Typography
-																	variant="subtitle1"
-																	color="inherit"
-																>
-																	10%
-																</Typography>
-															</Grid>
-														</Grid>
-													</Grid>
-													<Grid item md={1}>
-														<DialogRemove />
-													</Grid>
-												</Grid>
-											</Grid>
-										</Grid>
-
-										{/* <Divider sx={{ my: 1.5 }} /> */}
-									</Grid>
-								</Card>
+								<li key={value} class="border-gray-400 flex flex-row mb-2">
+									<div class="shadow border select-none cursor-pointer bg-white dark:bg-gray-800 rounded-md flex flex-1 items-center p-5 pl-6">
+										<div class="flex flex-col w-10 h-10 justify-center items-center mr-4">
+											<img
+												alt="profil"
+												src="/images/person/6.jpg"
+												class="mx-auto object-cover rounded-full h-10 w-10 "
+											/>
+										</div>
+										<div class="flex-1 pl-5 md:mr-16">
+											<div class="font-medium dark:text-white">
+												Jean Marc {value}
+											</div>
+										</div>
+										<div class="text-gray-600 dark:text-gray-200 text-xs md:mr-20">
+											6:00 AM
+										</div>
+										<div class="w-24 text-right flex justify-end">
+											<DialogRemove />
+										</div>
+									</div>
+								</li>
 							))}
-						</CardContent>
-					</Box>
+						</ul>
+					</div>
 				</>
 			)}
 		</>

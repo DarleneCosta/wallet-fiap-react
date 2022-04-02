@@ -1,12 +1,13 @@
 import { Disclosure } from '@headlessui/react';
-import { ArrowRightIcon } from '@heroicons/react/outline';
+import { MenuIcon } from '@heroicons/react/outline';
 import walletImage from '../../Assets/wallet2.png';
 
 const navigation = [
 	{ name: 'Favoritas', href: '#', current: true },
 	{ name: 'Carteira', href: '#', current: false },
 	{ name: 'Lojas', href: '#', current: false },
-	{ name: 'Quem somos', href: '#', current: false }
+	{ name: 'Quem somos', href: '#', current: false },
+	{ name: 'Sair', href: '#', current: false }
 ];
 
 function classNames(...classes) {
@@ -45,23 +46,10 @@ const AppBar = () => {
 										</div>
 									</div>
 								</div>
-								<div className="hidden md:block">
-									<div className="ml-4 flex items-center md:ml-6">
-										<button
-											type="button"
-											className="inline-flex  bg-yellow-500 p-1 rounded-md text-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-yellow-700 focus:ring-offset-gray-800 focus:ring-white"
-										>
-											Sair
-											<ArrowRightIcon
-												className="ml-1 mr-1 h-5 w-5"
-												aria-hidden="true"
-											/>
-										</button>
-									</div>
-								</div>
+						
 								<div className="-mr-2 flex md:hidden">
 									<Disclosure.Button className="bg-yellow-500 inline-flex items-center justify-center p-2 rounded-full text-black hover:text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-										<ArrowRightIcon
+										<MenuIcon
 											className="h-6 w-6 text-white"
 											aria-hidden="true"
 										/>

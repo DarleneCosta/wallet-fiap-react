@@ -14,13 +14,20 @@ export default function Confirm() {
 	return (
 		<>
 			<div className="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
-				<button
+				{/* <button
 					type="button"
 					className="-mr-1 flex p-2 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2"
 					onClick={handleClickOpen}
 				>
 					<span className="sr-only">Dismiss</span>
 					<XIcon className="h-6 w-6 focus:text-white " aria-hidden="true" />
+				</button> */}
+				<button
+					type="button"
+					onClick={handleClickOpen}
+					className="inline-flex   p-1 rounded-md text-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-yellow-500 focus:ring-offset-gray-800 focus:ring-white"
+				>
+					<XIcon className="ml-1 mr-1 h-5 w-5" aria-hidden="true" />
 				</button>
 			</div>
 			<Transition.Root show={open} as={Fragment}>
