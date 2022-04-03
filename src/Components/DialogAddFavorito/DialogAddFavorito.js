@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { ExclamationIcon, XIcon } from '@heroicons/react/outline';
+import { ExclamationIcon, PlusIcon } from '@heroicons/react/outline';
 
 export default function Confirm() {
 	const [open, setOpen] = useState(false);
@@ -12,15 +12,20 @@ export default function Confirm() {
 	};
 
 	return (
-		<div >
+		<div>
 			<div className="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
-			
-				<button
+				{/* <button
 					type="button"
 					onClick={handleClickOpen}
 					className="inline-flex  p-1 rounded-md text-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-yellow-500 focus:ring-offset-gray-800 focus:ring-white"
 				>
 					<XIcon className="ml-1 mr-1 h-5 w-5" aria-hidden="true" />
+				</button> */}
+				<button
+					onClick={handleClickOpen}
+					className="bg-yellow-500 flex items-center p-4 transition ease-in duration-200 uppercase rounded-full hover:bg-yellow-800 hover:text-white fixed"
+				>
+					<PlusIcon className="h-6 w-6 text-white" aria-hidden="true" />
 				</button>
 			</div>
 			<Transition.Root show={open} as={Fragment}>
@@ -61,24 +66,15 @@ export default function Confirm() {
 							<div className="relative inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
 								<div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
 									<div className="sm:flex sm:items-start">
-										<div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 sm:mx-0 sm:h-10 sm:w-10">
-											<ExclamationIcon
-												className="h-6 w-6 text-yellow-600"
-												aria-hidden="true"
-											/>
-										</div>
+									
 										<div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
 											<Dialog.Title
 												as="h3"
 												className="text-lg leading-6 font-medium text-gray-900"
 											>
-												Remover
+												Salvar em sua lista
 											</Dialog.Title>
-											<div className="mt-2">
-												<p className="text-sm text-gray-500">
-													Remove a empresa da sua lista de favoritas?
-												</p>
-											</div>
+										
 										</div>
 									</div>
 								</div>
