@@ -4,7 +4,7 @@ import { Avatar, Box, Card, CardContent, CircularProgress, Grid, Typography } fr
 import SignInImg from '../../Assets/img_login_new.png';
 
 import DialogRemove from '../../Components/DialogRemove/DialogRemove';
-import AppBar from '../../Components/AppBar/AppBar.js';
+import AppBar from '../../Components/AppBar/AppBar';
 // assets
 
 import './Dashboard.css';

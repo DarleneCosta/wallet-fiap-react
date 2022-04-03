@@ -4,7 +4,7 @@ import MuiThemes from './Utils/Common/MuiThemes';
 import reportWebVitals from './reportWebVitals';
 import Router from './Routes/routes';
 import { BrowserRouter } from 'react-router-dom';
-import './styles/index.css';
+import './Styles/index.css';
 
 import AuthContext from './Contexts/Auth';
 

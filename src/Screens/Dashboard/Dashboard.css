@@ -2,6 +2,6 @@
 .fixed {
  position: fixed;
  bottom: 60px;
- right: 32px;
- box-shadow: 10px 5px 5px rgb(167, 167, 167);
+ right: 15px;
+ box-shadow: 5px 3px 3px rgb(167, 167, 167);
 }

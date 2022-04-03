@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import SaldoCarteira from '../../Components/SaldoCarteira/SaldoCarteira';
 import DialogRemove from '../../Components/DialogRemove/DialogRemove';
 import DialogAddFavorito from '../../Components/DialogAddFavorito/DialogAddFavorito';
-import AppBar from '../../Components/AppBar/AppBar.js';
+import AppBar from '../../Components/AppBar/AppBar';
 import { PlusIcon } from '@heroicons/react/outline';
 // assets
 
@@ -23,8 +23,10 @@ const DashboardView = ({ userIsLogged }) => {
 	return (
 		<div className="h-full bg-gray-100">
 			<AppBar />
+
 			<div className="lg:text-center bg-blue-500 ">
 				<div className="hidden md:block">
+					<hr className="mx-3" />
 					<div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 						<dt className="text-sm font-medium text-white bg-blue-500 py-2">
 							Olá, Fulano da Silva
@@ -54,7 +56,7 @@ const DashboardView = ({ userIsLogged }) => {
 				<ul className="flex flex-col">
 					{[1, 2, 3].map((value) => (
 						<li key={value} className="border-gray-400 flex flex-row mb-2">
-							<div className="shadow border select-none cursor-pointer bg-white dark:bg-gray-800 rounded-md flex flex-1 items-center p-5 pl-6">
+							<div className="shadow border select-none cursor-pointer bg-white dark:bg-gray-800 rounded-md flex flex-1 items-center p-5 px-12">
 								<div className="flex flex-col w-10 h-10 justify-center items-center mr-4">
 									<img
 										alt="profil"
