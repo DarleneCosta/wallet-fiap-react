@@ -33,10 +33,7 @@ const SignUpView = ({ signUpFunction }) => {
 	return (
 		<>
 			<div className="h-screen bg-gray-200 flex flex-col xl:flex-row-reverse xl:items-center">
-				<div
-					id="logo"
-					className="flex justify-center content-center hidden xl:flex xl:visible"
-				>
+				<div id="logo" className="flex justify-center content-center xl:flex xl:visible">
 					<img
 						className="xl:visible w-40 h-40 mt-12 rounded-full xl:w-screen xl:h-screen xl:rounded-none xl:mt-0 xl:shadow-2xl"
 						src={image}

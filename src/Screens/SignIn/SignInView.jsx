@@ -1,34 +1,20 @@
-import { LockClosedIcon } from '@heroicons/react/solid';
-import { Formik, Form, ErrorMessage, validateYupSchema, Field } from 'formik';
-import { useState } from 'react';
+import { Formik, Form, Field } from 'formik';
 import background from '../../Assets/login.jpg';
 import loginImage from '../../Assets/img_login_.png';
-import { WindowSharp } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 const SignInView = ({ signInSchema, makeLogin }) => {
-	const [cpf, setCpf] = useState('');
-	const [password, setPassword] = useState('');
 	const navigate = useNavigate();
-	const handleSubmit = (event) => {
-		makeLogin({ cpf, password });
-
-		event.preventDefault();
-	};
 
 	return (
 		<>
-			<div className="h-screen bg-gray-200 flex flex-col xl:flex-row-reverse xl:items-center">
-				<div id="logo" className="justify-center content-center hidden xl:flex xl:visible">
-					<img
-						className="xl:visible w-40 h-40 mt-12 rounded-full xl:w-screen xl:h-screen xl:rounded-none xl:mt-0 xl:shadow-2xl"
-						src={background}
-						alt="Logo da carteira"
-					/>
+			<div className="h-full flex flex-col xl:flex-row-reverse">
+				<div className="hidden xl:w-2/4 xl:flex justify-center items-center content-center">
+					<img className="w-full h-full" src={background} alt="" />
 				</div>
 				<div
 					id="form"
-					className="w-screen h-screen flex flex-col justify-center content-center "
+					className="bg-gray-200 h-screen xl:w-2/4 flex justify-center items-center content-center"
 				>
 					<Formik
 						initialValues={{
@@ -37,18 +23,17 @@ const SignInView = ({ signInSchema, makeLogin }) => {
 						}}
 						validationSchema={signInSchema}
 						onSubmit={(values) => {
-							// same shape as initial values
 							makeLogin(values);
 						}}
 					>
-						{({ errors, touched }) => (
-							<Form className="flex flex-col justify-center items-center space-y-16 xl:space-y-20 ">
+						{({ errors }) => (
+							<Form className="flex flex-col justify-center items-center space-y-16 w-full">
 								<img
 									className="w-40 h-40 mt-5 mb-5"
 									src={loginImage}
 									alt="Logo da carteira"
 								/>
-								<div className=" flex flex-col justify-center items-center w-screen">
+								<div className=" flex flex-col justify-center items-center w-screen xl:w-full">
 									<Field
 										name="cpf"
 										className="w-3/4 h-8  bg-transparent rounded-none border-b-2 border-zinc-700 focus:outline-none placeholder:font-semibold placeholder:text-zinc-600"
@@ -63,7 +48,7 @@ const SignInView = ({ signInSchema, makeLogin }) => {
 									) : null}
 								</div>
 
-								<div className=" flex flex-col justify-center items-center w-screen">
+								<div className=" flex flex-col justify-center items-center w-screen xl:w-full">
 									<Field
 										name="password"
 										className="w-3/4 h-8  bg-transparent rounded-none border-b-2 border-zinc-700 focus:outline-none placeholder:font-semibold placeholder:text-zinc-600"
@@ -88,6 +73,9 @@ const SignInView = ({ signInSchema, makeLogin }) => {
 									<div className="text-sm">
 										<p
 											onClick={() => navigate('/SignUp')}
+											style={{
+												cursor: 'pointer'
+											}}
 											className="font-medium text-black hover:text-blue-700"
 										>
 											Não tem conta? Cadastre-se
