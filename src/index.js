@@ -1,20 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MuiThemes from './Utils/Common/MuiThemes';
 import reportWebVitals from './reportWebVitals';
-import Router from './Routes/routes';
+import Router from './routes';
 import { BrowserRouter } from 'react-router-dom';
-import './Styles/index.css';
+import './styles/index.css';
 
-import AuthContext from './Contexts/Auth';
+import AuthContext from './contexts/Auth';
 
 ReactDOM.render(
 	<BrowserRouter>
-		<MuiThemes>
-			<AuthContext.Provider>
-				<Router />
-			</AuthContext.Provider>
-		</MuiThemes>
+		<AuthContext.Provider value={{signed:true}} >
+			<Router />
+		</AuthContext.Provider>
 	</BrowserRouter>,
 	document.getElementById('root')
 );

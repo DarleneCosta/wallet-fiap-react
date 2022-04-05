@@ -1,9 +1,8 @@
 import { LockClosedIcon } from '@heroicons/react/solid';
 import { Formik, Form, ErrorMessage, validateYupSchema, Field } from 'formik';
 import { useState } from 'react';
-import background from '../../Assets/login.jpg';
-import loginImage from '../../Assets/img_login_.png';
-import { WindowSharp } from '@mui/icons-material';
+import background from '../../assets/login.jpg';
+import loginImage from '../../assets/img_login_.png';
 import { useNavigate } from 'react-router-dom';
 
 const SignInView = ({ signInSchema, makeLogin }) => {
@@ -12,7 +11,6 @@ const SignInView = ({ signInSchema, makeLogin }) => {
 	const navigate = useNavigate();
 	const handleSubmit = (event) => {
 		makeLogin({ cpf, password });
-
 		event.preventDefault();
 	};
 
@@ -51,7 +49,7 @@ const SignInView = ({ signInSchema, makeLogin }) => {
 								<div className=" flex flex-col justify-center items-center w-screen">
 									<Field
 										name="cpf"
-										className="w-3/4 h-8  bg-transparent rounded-none border-b-2 border-zinc-700 focus:outline-none placeholder:font-semibold placeholder:text-zinc-600"
+										className="w-3/4 h-8  bg-transparent rounded-none border-b-2 border-zinc-700 focus:border-blue-700 focus:outline-none placeholder:font-semibold placeholder:text-zinc-600"
 										placeholder="CPF"
 									/>
 									{errors.cpf ? (
@@ -66,7 +64,7 @@ const SignInView = ({ signInSchema, makeLogin }) => {
 								<div className=" flex flex-col justify-center items-center w-screen">
 									<Field
 										name="password"
-										className="w-3/4 h-8  bg-transparent rounded-none border-b-2 border-zinc-700 focus:outline-none placeholder:font-semibold placeholder:text-zinc-600"
+										className="w-3/4 h-8  bg-transparent rounded-none border-b-2 border-zinc-700 focus:border-blue-700 focus:outline-none placeholder:font-semibold placeholder:text-zinc-600"
 										type="password"
 										placeholder="Senha"
 									/>

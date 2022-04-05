@@ -19,10 +19,11 @@ export default (apiFunc) => {
 	};
 
 	const requestPromise = async (...args) => {
+		
 		return new Promise((resolve, reject) => {
 			setLoading(true);
 			try {
-				console.log(args);
+				
 				apiFunc(...args)
 					.then((result) => {
 						resolve(result.data);

@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './Home.css';
-import walletImage from '../../Assets/wallet2.png';
+import walletImage from '../../assets/wallet2.png';
 
 const HomeView = () => {
 	const navigate = useNavigate();

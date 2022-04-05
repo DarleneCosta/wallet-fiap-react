@@ -1,5 +1,5 @@
 import React from 'react';
-import ApiConn from '../../Services/APIs/Common/api';
+import ApiConn from '../../services/APIs/Common/api';
 import SignUpView from './SignUpView';
 
 const SignUpController = () => {

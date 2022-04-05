@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-import image from '../../Assets/Wallet.jpg';
+import image from '../../assets/Wallet.jpg';
 
 const SignUpView = ({ signUpFunction }) => {
 	const [email, setEmail] = useState('');

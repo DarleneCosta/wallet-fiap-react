@@ -1,5 +1,5 @@
 import React from 'react';
-import Auth from '../../Services/APIs/Auth/Auth';
+import Auth from '../../services/APIs/Auth/Auth';
 import DashboardView from './DashboardView';
 
 const DashboardController = () => {

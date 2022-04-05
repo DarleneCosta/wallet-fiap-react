@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import SignIn from '../Screens/SignIn/SignInController';
-import Home from '../Screens/Home/HomeController';
-import SignUp from '../Screens/SignUp/SignUpController';
-import DashboardController from '../Screens/Dashboard/DashboardController';
+import SignIn from '../screens/SignIn/SignInController';
+import Home from '../screens/Home/HomeController';
+import SignUp from '../screens/SignUp/SignUpController';
+import DashboardController from '../screens/Dashboard/DashboardController';
 
 const routes = () => {
 	return (
