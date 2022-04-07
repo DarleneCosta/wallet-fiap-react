@@ -5,7 +5,7 @@ import DashboardController from '../screens/Dashboard/DashboardController';
   const AuthRoutes = () => {
 		return (
 			<Routes>			
-				<Route path="/Wallet" element={<DashboardController />} />
+				<Route path="*" element={<DashboardController />} />
 			</Routes>
 		);
   };

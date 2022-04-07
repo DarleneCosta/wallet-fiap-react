@@ -1,19 +1,15 @@
 import { useState, useContext } from 'react';
 import SignInView from './SignInView';
 import * as Yup from 'yup';
-import { Route, useNavigate } from 'react-router-dom';
-
-import useAPI from '../../services/APIs/Common/useAPI';
-import auth from '../../services/APIs/Auth/Auth';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../contexts/Auth';
 
 const SignInController = () => {
-	const { signed } = useContext(AuthContext);
-	console.log(signed);
+	const { signed, signInto } = useContext(AuthContext);
+
 	const [connectMessage, setConnectMessage] = useState('');
 	const [infoSignIn] = useState('');
 	const navigate = useNavigate();
-	const signInto = useAPI(auth.signIn);
 
 	const signInSchema = Yup.object().shape({
 		cpf: Yup.string()
@@ -24,27 +20,21 @@ const SignInController = () => {
 			.required('Senha é obrigatória')
 	});
 
-	const makeLogin = async (userObject) => {
-		const data = await signInto.requestPromise(userObject);
-
-		console.log(data);
-		// .then((res) => {
-		// 	console.log(res);
-		if (data.token) {
-			localStorage.setItem('token', data.token);
-			navigate('/Wallet');
-		}
-		// 	navigate('/Wallet');
-		// 	resolve(...res.data);
-		// })
-		// .catch((err) => {
-		// 	console.log(err);
-		// });
+	const makeLogin = (userObject) => {
+		debugger;
+		signInto(userObject)
+			.then(() => {
+				if (signed) {
+					navigate('/Wallet');
+				}
+			})
+			.catch((err) => {
+				setConnectMessage(err);
+			});
 	};
 
 	return (
 		<SignInView
-			loading={signInto.loading}
 			signInSchema={signInSchema}
 			infoSignIn={infoSignIn}
 			connectMessage={connectMessage}

@@ -1,13 +1,13 @@
-FROM node:latest
-
+# dockerfile
+# stage 1
+FROM node:13.12.0-alpine as build
 WORKDIR /app
-
-COPY package.json ./
-
-RUN npm install
-
-COPY . .
-
-EXPOSE 3000
-
-CMD ["npm","start"]
+ENV PATH /app/node_modules/.bin:$PATH
+COPY . /app
+RUN npm ci --loglevel verbose
+RUN npm run build
+# # stage 2
+FROM nginx:1.16.0-alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

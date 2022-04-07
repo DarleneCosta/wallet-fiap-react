@@ -7,9 +7,9 @@ import SignUp from '../screens/SignUp/SignUpController';
 const AppRoutes = () => {
 	return (
 		<Routes>
-			<Route path="/" element={<Home />} />
 			<Route path="/SignUp" element={<SignUp />} />
 			<Route path="/SignIn" element={<SignIn />} />
+			<Route path="*" element={<Home />} />
 		</Routes>
 	);
 };

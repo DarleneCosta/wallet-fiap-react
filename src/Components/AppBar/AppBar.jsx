@@ -1,6 +1,6 @@
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon } from '@heroicons/react/outline';
-import walletImage from '../../assets/wallet2.png';
+import walletImage from '../../assets/ico_wallet.png';
 
 const navigation = [
 	{ name: 'Favoritas', href: '#', current: true },

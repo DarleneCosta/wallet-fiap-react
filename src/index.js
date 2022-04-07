@@ -5,13 +5,13 @@ import Router from './routes';
 import { BrowserRouter } from 'react-router-dom';
 import './styles/index.css';
 
-import AuthContext from './contexts/Auth';
+import { AuthProvider } from './contexts/Auth';
 
 ReactDOM.render(
 	<BrowserRouter>
-		<AuthContext.Provider value={{signed:true}} >
+		<AuthProvider>
 			<Router />
-		</AuthContext.Provider>
+		</AuthProvider>
 	</BrowserRouter>,
 	document.getElementById('root')
 );
