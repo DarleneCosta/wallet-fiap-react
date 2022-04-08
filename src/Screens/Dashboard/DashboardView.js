@@ -10,14 +10,14 @@ import { useNavigate } from 'react-router-dom';
 
 const DashboardView = ({ userIsLogged }) => {
 	const navigate = useNavigate();
-
+	var userSession = localStorage.getItem('@wallet:session');
+	console.log(userSession);
 	useEffect(() => {
 		if (!userIsLogged) {
 			navigate('/');
 		}
 	});
 
-	
 	return (
 		<div className="h-full bg-gray-100">
 			<AppBar />
@@ -53,7 +53,10 @@ const DashboardView = ({ userIsLogged }) => {
 			<div className="w-auto flex flex-col px-8 py-5 justify-center bg-gray-100 ">
 				<ul className="flex flex-col">
 					{[1, 2, 3].map((value) => (
-						<li key={value} className="border-gray-400 flex flex-row mb-2">
+						<li
+							key={value}
+							className="border-gray-400 flex flex-row mb-2"
+						>
 							<div className="shadow border select-none cursor-pointer bg-white dark:bg-gray-800 rounded-md flex flex-1 items-center p-5 px-12">
 								<div className="flex flex-col w-10 h-10 justify-center items-center mr-4">
 									<img

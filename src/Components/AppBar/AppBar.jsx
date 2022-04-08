@@ -1,20 +1,24 @@
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon } from '@heroicons/react/outline';
 import walletImage from '../../assets/ico_wallet.png';
-
-const navigation = [
-	{ name: 'Favoritas', href: '#', current: true },
-	{ name: 'Carteira', href: '#', current: false },
-	{ name: 'Lojas', href: '#', current: false },
-	{ name: 'Quem somos', href: '#', current: false },
-	{ name: 'Sair', href: '#', current: false }
-];
+import React, { useContext } from 'react';
+import AuthContext from '../../contexts/Auth';
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
 }
 
 const AppBar = () => {
+	const { signOut } = useContext(AuthContext);
+
+	const navigation = [
+		{ name: 'Favoritas', current: true },
+		{ name: 'Carteira', current: false },
+		{ name: 'Lojas', current: false },
+		{ name: 'Quem somos', current: false },
+		{ name: 'Sair', current: false }
+	];
+
 	return (
 		<>
 			<Disclosure as="nav" className="bg-blue-500">
@@ -24,29 +28,42 @@ const AppBar = () => {
 							<div className="flex items-center justify-between h-16">
 								<div className="flex items-center">
 									<div className="flex-shrink-0">
-										<img className="h-8 w-8" src={walletImage} alt="Workflow" />
+										<img
+											className="h-8 w-8"
+											src={walletImage}
+											alt="Workflow"
+										/>
 									</div>
 									<div className="hidden md:block">
 										<div className="ml-10 flex items-baseline space-x-4">
 											{navigation.map((item) => (
-												<a
+												<button
 													key={item.name}
-													href={item.href}
 													className={classNames(
 														item.current
 															? 'bg-yellow-500 text-white'
 															: 'text-yellow-300 hover:bg-yellow-700 hover:text-white',
 														'px-3 py-2 rounded-md text-sm font-medium'
 													)}
-													aria-current={item.current ? 'page' : undefined}
+													aria-current={
+														item.current
+															? 'page'
+															: undefined
+													}
+													onClick={() => {
+														if (
+															item.name === 'Sair'
+														)
+															signOut();
+													}}
 												>
 													{item.name}
-												</a>
+												</button>
 											))}
 										</div>
 									</div>
 								</div>
-						
+
 								<div className="-mr-2 flex md:hidden">
 									<Disclosure.Button className="bg-yellow-500 inline-flex items-center justify-center p-2 rounded-full text-black hover:text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-yellow-800 focus:ring-white">
 										<MenuIcon
@@ -71,7 +88,9 @@ const AppBar = () => {
 												: 'text-yellow-300 hover:bg-yellow-700 hover:text-white',
 											'block px-3 py-2 rounded-md text-base font-medium'
 										)}
-										aria-current={item.current ? 'page' : undefined}
+										aria-current={
+											item.current ? 'page' : undefined
+										}
 									>
 										{item.name}
 									</Disclosure.Button>
