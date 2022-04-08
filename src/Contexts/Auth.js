@@ -18,7 +18,10 @@ export const AuthProvider = (React.FC = ({ children }) => {
 	}, []);
 
 	async function signInto(userObject) {
+		// let { loading } = useSignIn;
+		// console.log(loading);
 		const response = await useSignIn.requestPromise(userObject);
+		//console.log(loading);
 		setUser(response);
 		localStorage.setItem('@wallet:session', JSON.stringify(response));
 	}

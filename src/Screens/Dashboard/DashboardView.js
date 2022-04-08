@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import SaldoCarteira from '../../components/SaldoCarteira/SaldoCarteira';
 import DialogRemove from '../../components/DialogRemove/DialogRemove';
 import DialogAddFavorito from '../../components/DialogAddFavorito/DialogAddFavorito';
@@ -6,18 +6,9 @@ import AppBar from '../../components/AppBar/AppBar';
 // assets
 
 import './Dashboard.css';
-import { useNavigate } from 'react-router-dom';
 
-const DashboardView = ({ userIsLogged }) => {
-	const navigate = useNavigate();
-	var userSession = localStorage.getItem('@wallet:session');
-	console.log(userSession);
-	useEffect(() => {
-		if (!userIsLogged) {
-			navigate('/');
-		}
-	});
-
+const DashboardView = () => {
+	
 	return (
 		<div className="h-full bg-gray-100">
 			<AppBar />

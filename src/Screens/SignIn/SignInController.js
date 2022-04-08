@@ -20,14 +20,13 @@ const SignInController = () => {
 			.required('Senha é obrigatória')
 	});
 
-	const makeLogin = (userObject) => {
-		signInto(userObject)
-			.then(() => {
-				navigate('/Wallet');
-			})
-			.catch((err) => {
-				setConnectMessage(err);
-			});
+	const makeLogin = async (userObject) => {
+		try {
+			await signInto(userObject);
+			navigate('/');
+		} catch (err) {
+			setConnectMessage(err);
+		}
 	};
 
 	return (
