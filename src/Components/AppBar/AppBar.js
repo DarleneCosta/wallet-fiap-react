@@ -1,8 +1,8 @@
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon } from '@heroicons/react/outline';
-import walletImage from '../../assets/ico_wallet.png';
+import walletImage from '../../Assets/ico_wallet.png';
 import React, { useContext } from 'react';
-import AuthContext from '../../contexts/Auth';
+import AuthContext from '../../Contexts/Auth';
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');

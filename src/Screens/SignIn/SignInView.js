@@ -1,10 +1,8 @@
-
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 
-import background from '../../assets/login.jpg';
-import loginImage from '../../assets/img_login_.png';
-
+import background from '../../Assets/login.jpg';
+import loginImage from '../../Assets/img_login_.png';
 
 const SignInView = ({ signInSchema, makeLogin }) => {
 	const navigate = useNavigate();

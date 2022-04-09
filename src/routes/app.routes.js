@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from '../screens/Home/HomeController';
-import SignIn from '../screens/SignIn/SignInController';
-import SignUp from '../screens/SignUp/SignUpController';
+import Home from '../Screens/Home/HomeController';
+import SignIn from '../Screens/SignIn/SignInController';
+import SignUp from '../Screens/SignUp/SignUpController';
 
 const AppRoutes = () => {
 	return (

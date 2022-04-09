@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
-import api from '../services/APIs/Common/api';
-import useAPI from '../services/APIs/Common/useAPI';
-import auth from '../services/APIs/Auth/Auth';
+import api from '../Services/APIs/Common/api';
+import useAPI from '../Services/APIs/Common/useAPI';
+import auth from '../Services/APIs/Auth/Auth';
 
 const AuthContext = createContext({});
 
@@ -10,7 +10,7 @@ export const AuthProvider = (React.FC = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const useSignIn = useAPI(auth.signIn);
-	
+
 	useEffect(() => {
 		const storagedSession = localStorage.getItem('@wallet:session');
 		if (storagedSession) {
@@ -20,19 +20,18 @@ export const AuthProvider = (React.FC = ({ children }) => {
 		setLoading(false);
 	}, []);
 
-	async function signInto(userObject) {	
+	async function signInto(userObject) {
 		const response = await useSignIn.requestPromise(userObject);
 		setUser(response);
-		localStorage.setItem('@wallet:session', JSON.stringify(response));		
+		localStorage.setItem('@wallet:session', JSON.stringify(response));
 		api.defaults.headers.Authorization = `Baerer ${response.token}`;
-		setLoading(false)
+		setLoading(false);
 	}
 	function signOut() {
 		localStorage.clear();
 		setUser(null);
 	}
 
-	
 	return (
 		<AuthContext.Provider
 			value={{

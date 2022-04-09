@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './Home.css';
-import walletImage from '../../assets/ico_wallet.png';
+import walletImage from '../../Assets/ico_wallet.png';
 
 const HomeView = () => {
 	const navigate = useNavigate();
@@ -17,10 +17,14 @@ const HomeView = () => {
 					Seja bem-vindo à sua carteira digital!
 				</span>
 				<span className="text-white text-center font-bold text-xl ml-2 mr-2 xl:text-2xl">
-					Aqui você compra em suas lojas favoritas e ganha na hora cashback em sua
-					carteira!
+					Aqui você compra em suas lojas favoritas e ganha na hora
+					cashback em sua carteira!
 				</span>
-				<img className="mt-24 w-16 h-16" src={walletImage} alt="Logo de um carteira" />
+				<img
+					className="mt-24 w-16 h-16"
+					src={walletImage}
+					alt="Logo de um carteira"
+				/>
 			</div>
 			<div
 				id="Buttons"

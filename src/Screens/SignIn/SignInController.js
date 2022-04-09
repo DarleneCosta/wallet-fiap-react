@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import SignInView from './SignInView';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../../contexts/Auth';
+import AuthContext from '../../Contexts/Auth';
 
 const SignInController = () => {
 	const { signInto } = useContext(AuthContext);

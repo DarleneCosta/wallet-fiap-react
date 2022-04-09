@@ -1,12 +1,11 @@
 import React from 'react';
-import SaldoCarteira from '../../components/SaldoCarteira/SaldoCarteira';
-import DialogRemove from '../../components/DialogRemove/DialogRemove';
-import DialogAddFavorito from '../../components/DialogAddFavorito/DialogAddFavorito';
-import AppBar from '../../components/AppBar/AppBar';
+import SaldoCarteira from '../../Components/SaldoCarteira/SaldoCarteira';
+import DialogRemove from '../../Components/DialogRemove/DialogRemove';
+import DialogAddFavorito from '../../Components/DialogAddFavorito/DialogAddFavorito';
+import AppBar from '../../Components/AppBar/AppBar';
 import './Dashboard.css';
 
 const DashboardView = () => {
-	
 	return (
 		<div className="h-full bg-gray-100">
 			<AppBar />

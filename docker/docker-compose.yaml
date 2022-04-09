@@ -16,11 +16,11 @@ services:
         container_name: api
         depends_on: 
          - db
-        image: jvitoralmeida/walletimage:1.0.13
+        image: jvitoralmeida/walletimage:1.0.11
         networks:
          - wallet_network
         ports:
-          - 80:8787
+          - 8081:8787
 
 volumes:
     db:
