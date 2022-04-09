@@ -3,8 +3,6 @@ import SaldoCarteira from '../../components/SaldoCarteira/SaldoCarteira';
 import DialogRemove from '../../components/DialogRemove/DialogRemove';
 import DialogAddFavorito from '../../components/DialogAddFavorito/DialogAddFavorito';
 import AppBar from '../../components/AppBar/AppBar';
-// assets
-
 import './Dashboard.css';
 
 const DashboardView = () => {
@@ -12,7 +10,6 @@ const DashboardView = () => {
 	return (
 		<div className="h-full bg-gray-100">
 			<AppBar />
-
 			<div className="lg:text-center bg-blue-500 ">
 				<div className="hidden md:block">
 					<hr className="mx-3" />
