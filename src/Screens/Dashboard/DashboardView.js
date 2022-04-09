@@ -21,7 +21,7 @@ const DashboardView = () => {
 						</dd>
 					</div>
 				</div>
-				<div className="md:hidden">
+				<div className="md:hidden flex flex-col">
 					<h2 className="text-base text-white font-semibold tracking-wide px-5 pt-2">
 						Olá, Fulano da Silva
 					</h2>
