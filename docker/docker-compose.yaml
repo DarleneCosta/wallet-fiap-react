@@ -20,8 +20,8 @@ services:
         networks:
          - wallet_network
         ports:
-          - 8080:8787
-        
+          - 80:8787
+
 volumes:
     db:
 networks:

@@ -1,28 +1,44 @@
-version: '3.0'
+version: '3.8'
+
 services:
-      db:
-        image: postgres
-        container_name: postgrescontainer
-        restart: always
-        environment:
-            - POSTGRES_PASSWORD=admin
-            - POSTGRES_USER=root
-            - POSTGRES_DB=wallet
-        volumes:
-          - db:/src/database
-        networks:
-         - wallet_network
-      api:
-        container_name: api
-        depends_on: 
-         - db
-        image: jvitoralmeida/walletimage:1.0.13
-        networks:
-         - wallet_network
-        ports:
-          - 8080:8787
-        
+  nginx:
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ../nginx
+    ports:
+      - "3050:80"
+
+  db:
+    image: postgres
+    container_name: postgrescontainer
+    restart: always
+    environment:
+        - POSTGRES_PASSWORD=admin
+        - POSTGRES_USER=root
+        - POSTGRES_DB=wallet
+    volumes:
+      - db:/src/database
+  api:
+    container_name: api
+    depends_on: 
+     - db
+    image: jvitoralmeida/walletimage:1.0.13
+    ports:
+      - 8080:8787        
+
+  client:
+    container_name: client
+    build:
+      dockerfile: Dockerfile
+      context: ../.
+    ports:
+      - 3000:3000
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
 volumes:
-    db:
-networks:
-  wallet_network:
+  db:
