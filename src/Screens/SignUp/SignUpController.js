@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ApiConn from '../../Services/APIs/Common/api';
 import SignUpView from './SignUpView';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
+import LoadingOverlay from 'react-loading-overlay';
 
 const SignUpController = () => {
+	const [isActive, setIsActive] = useState(false);
+	const navigate = useNavigate();
+
 	const signUpSchema = Yup.object().shape({
 		cpf: Yup.string()
 			.length(11, 'CPF são obrigatóriamente 11 dígitos')
@@ -15,7 +20,7 @@ const SignUpController = () => {
 			.email('Formato de email inválido')
 			.required('Email é obrigatório'),
 		name: Yup.string().required('Nome é obrigatório'),
-		cellphone: Yup.number()
+		cellphone: Yup.string()
 			.min(11, 'DDD e número são obrigatórios')
 			.max(11, 'DDD e número apenas')
 			.required('Celular é obrigatório'),
@@ -29,15 +34,22 @@ const SignUpController = () => {
 	});
 
 	const doSignUp = (signUpObject) => {
-		console.log('object to call api');
-		console.log(signUpObject);
-
+		setIsActive(true);
 		ApiConn.post('/user/signup', signUpObject)
-			.then((res) => console.log(res))
+			.then((res) => {
+				setTimeout(function () {
+					setIsActive(false);
+					navigate('/SignIn');
+				}, 1500);
+			})
 			.catch((err) => console.log(err));
 	};
 
-	return <SignUpView signUpFunction={doSignUp} signUpSchema={signUpSchema} />;
+	return (
+		<LoadingOverlay active={isActive} spinner text="Carregando...">
+			<SignUpView signUpFunction={doSignUp} signUpSchema={signUpSchema} />
+		</LoadingOverlay>
+	);
 };
 
 export default SignUpController;
