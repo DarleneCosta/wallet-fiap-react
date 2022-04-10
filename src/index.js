@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import Router from './routes';
+import Router from './Routes';
 import { BrowserRouter } from 'react-router-dom';
-import './styles/index.css';
+import './Styles/index.css';
 
 import { AuthProvider } from './Contexts/Auth';
 

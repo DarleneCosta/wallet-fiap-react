@@ -5,7 +5,7 @@ import DialogAddFavorito from '../../Components/DialogAddFavorito/DialogAddFavor
 import AppBar from '../../Components/AppBar/AppBar';
 import './Dashboard.css';
 
-const DashboardView = () => {
+const DashboardView = ({ storePreference }) => {
 	return (
 		<div className="h-full bg-gray-100">
 			<AppBar />
