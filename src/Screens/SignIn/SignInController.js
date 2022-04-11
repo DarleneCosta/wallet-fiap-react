@@ -8,7 +8,6 @@ const SignInController = () => {
 	const { signInto } = useContext(AuthContext);
 
 	const [connectMessage, setConnectMessage] = useState('');
-	const [infoSignIn] = useState('');
 	const navigate = useNavigate();
 
 	const signInSchema = Yup.object().shape({
@@ -25,14 +24,24 @@ const SignInController = () => {
 			await signInto(userObject);
 			navigate('/');
 		} catch (err) {
-			setConnectMessage(err);
+			setConnectMessage(err.toString());
 		}
+
+		// return new Promise(() => {
+		// 	signInto
+		// 		.requestPromise(userObject)
+		// 		.then(() => {
+		// 			navigate('/');
+		// 		})
+		// 		.catch((error) => {
+		// 			setConnectMessage(error);
+		// 		});
+		// });
 	};
 
 	return (
 		<SignInView
 			signInSchema={signInSchema}
-			infoSignIn={infoSignIn}
 			connectMessage={connectMessage}
 			makeLogin={makeLogin}
 		/>

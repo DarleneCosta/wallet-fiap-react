@@ -31,7 +31,7 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
 }
 
-export default function Confirm() {
+export default function DialogAddPreferences() {
 	const [open, setOpen] = useState(false);
 
 	const cancelButtonRef = useRef(null);

@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
-
+import Alert from '../../Components/Alert/Alert';
 import background from '../../Assets/login.jpg';
 import loginImage from '../../Assets/img_login_.png';
 
-const SignInView = ({ signInSchema, makeLogin }) => {
+const SignInView = ({ signInSchema, makeLogin, connectMessage }) => {
+	debugger
 	const navigate = useNavigate();
 	return (
 		<>
@@ -33,6 +34,12 @@ const SignInView = ({ signInSchema, makeLogin }) => {
 									src={loginImage}
 									alt="Logo da carteira"
 								/>
+								{connectMessage ? (
+									<Alert
+										title="Não foi possivel conectar"
+										subTitle={connectMessage}
+									/>
+								) : null}
 								<div className=" flex flex-col justify-center items-center w-screen xl:w-full">
 									<Field
 										name="cpf"
