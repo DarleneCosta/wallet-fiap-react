@@ -1,55 +1,52 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import useAPI from '../../Services/APIs/Common/useAPI';
-import storePreference from '../../Services/APIs/Store/Store';
+import preference from '../../Services/APIs/Preference/Preference';
 import balanceWallet from '../../Services/APIs/Balance/Balance';
 import DashboardView from './DashboardView';
 import LoadingOverlay from 'react-loading-overlay';
+import AuthContext from '../../Contexts/Auth';
 
 const DashboardController = () => {
-	const storagedSession = JSON.parse(localStorage.getItem('@wallet:session'));
-	const cpf = storagedSession.cpf;
-	const getStoreGetAPI = useAPI(storePreference.getAllStore(cpf));
-	const getBalanceGetAPI = useAPI(balanceWallet.getBalance(cpf));
+	const { user } = useContext(AuthContext);
+	const getPreferencesAPI = useAPI(preference.getAllStorePreference);
+	const getBalanceAPI = useAPI(balanceWallet.getBalance);
 
-	function getStorePreferences() {
-		return new Promise(() => {
-			getStoreGetAPI
-				.requestPromise()
-				.then((info) => {
-					console.log(info);
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-		});
-	}
+	// function getBalanceWallet() {
+	// 	return new Promise(() => {
+	// 		getBalanceGetAPI
+	// 			.requestPromise()
+	// 			.then((info) => {
+	// 				console.log(info);
+	// 			})
+	// 			.catch((error) => {
+	// 				console.log(error);
+	// 			});
+	// 	});
+	// }
 
-	function getBalanceWallet() {
-		return new Promise(() => {
-			getBalanceGetAPI
-				.requestPromise()
-				.then((info) => {
-					console.log(info);
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-		});
-	}
-
-	if (cpf) {
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	useEffect(() => {
+		getBalance();
 		getStorePreferences();
-		getBalanceWallet();
-	}
+	}, [user]);
+
+	const getStorePreferences = async () => {
+		await getPreferencesAPI.request(user);
+	};
+	const getBalance = async () => {
+		await getBalanceAPI.request(user);
+	};
+
 	return (
 		<LoadingOverlay
-			active={!!getStoreGetAPI.loading}
+			active={!!getPreferencesAPI.loading}
 			spinner
 			text="Carregando..."
 		>
 			<DashboardView
-				storePreference={getStoreGetAPI.data}
-				infoPreference={getStoreGetAPI.error}
+				storePreference={getPreferencesAPI.data}
+				infoPreference={getPreferencesAPI.error}
+				balanceWallet={getBalanceAPI.data}
 			/>
 		</LoadingOverlay>
 	);

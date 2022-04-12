@@ -5,8 +5,10 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import LoadingOverlay from 'react-loading-overlay';
 
+
 const SignUpController = () => {
 	const [isActive, setIsActive] = useState(false);
+	const [connectMessage, setConnectMessage] = useState('');
 	const navigate = useNavigate();
 
 	const signUpSchema = Yup.object().shape({
@@ -42,12 +44,16 @@ const SignUpController = () => {
 					navigate('/SignIn');
 				}, 1500);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => setConnectMessage(err.toString()));
 	};
 
 	return (
 		<LoadingOverlay active={isActive} spinner text="Carregando...">
-			<SignUpView signUpFunction={doSignUp} signUpSchema={signUpSchema} />
+			<SignUpView
+				signUpFunction={doSignUp}
+				signUpSchema={signUpSchema}
+				connectMessage={connectMessage}
+			/>
 		</LoadingOverlay>
 	);
 };

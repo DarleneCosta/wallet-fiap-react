@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
 
-export default function Saldo() {
+export default function Saldo({ value }) {
 	const [isVisible, setIsVisible] = useState(false);
 	return (
 		<>
@@ -16,7 +16,7 @@ export default function Saldo() {
 						}`}
 						style={{ width: '150px' }}
 					>
-						{isVisible ? '100,00' : '***'}
+						{isVisible ? value : '***'}
 					</div>
 					<div>
 						<button

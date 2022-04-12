@@ -6,7 +6,7 @@ import DialogAddPreferences from '../../Components/DialogAddPreferences/DialogAd
 import AppBar from '../../Components/AppBar/AppBar';
 import './Dashboard.css';
 
-const DashboardView = ({ storePreference, infoPreference }) => {
+const DashboardView = ({ storePreference, infoPreference, balanceWallet }) => {
 	const alert = {
 		title: 'Lojas não localizadas',
 		subTitle:
@@ -21,19 +21,23 @@ const DashboardView = ({ storePreference, infoPreference }) => {
 					<hr className="mx-3" />
 					<div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 						<dt className="text-sm font-medium text-white bg-blue-500 py-2">
-							Olá, Fulano da Silva
+							Olá, {balanceWallet && balanceWallet.user.name}
 						</dt>
 						<dd className="bg-gray-100 py-2 px-3 text-sm text-gray-900 sm:col-span-2 rounded-md flex items-center justify-between">
-							<BalanceWallet />
+							<BalanceWallet
+								value={balanceWallet && balanceWallet.value}
+							/>
 						</dd>
 					</div>
 				</div>
 				<div className="md:hidden flex flex-col">
 					<h2 className="text-base text-white font-semibold tracking-wide px-5 pt-2">
-						Olá, Fulano da Silva
+						Olá, {balanceWallet && balanceWallet.user.name}
 					</h2>
 					<div className="py-3 px-10 bg-gray-100 dark:bg-gray-800 text-gray-600 border-blue-500 flex items-center justify-between mt-2">
-						<BalanceWallet />
+						<BalanceWallet
+							value={balanceWallet && balanceWallet.value}
+						/>
 					</div>
 				</div>
 			</div>

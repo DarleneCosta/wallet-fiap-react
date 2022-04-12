@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default (apiFunc) => {
+
 	const [data, setData] = useState(null);
 	const [error, setError] = useState('');
 	const [loading, setLoading] = useState(false);
@@ -19,11 +20,9 @@ export default (apiFunc) => {
 	};
 
 	const requestPromise = async (...args) => {
-		
 		return new Promise((resolve, reject) => {
 			setLoading(true);
 			try {
-				
 				apiFunc(...args)
 					.then((result) => {
 						resolve(result.data);

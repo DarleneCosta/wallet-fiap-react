@@ -3,9 +3,10 @@ import SignInView from './SignInView';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../Contexts/Auth';
+import LoadingOverlay from 'react-loading-overlay';
 
 const SignInController = () => {
-	const { signInto } = useContext(AuthContext);
+	const { signInto, loading } = useContext(AuthContext);
 
 	const [connectMessage, setConnectMessage] = useState('');
 	const navigate = useNavigate();
@@ -24,27 +25,23 @@ const SignInController = () => {
 			await signInto(userObject);
 			navigate('/');
 		} catch (err) {
-			setConnectMessage(err.toString());
+			let msg =
+				err.toString().indexOf('403') >= 0
+					? 'Usuário ou senha inválidos.'
+					: err.toString();
+			setConnectMessage(msg);
 		}
 
-		// return new Promise(() => {
-		// 	signInto
-		// 		.requestPromise(userObject)
-		// 		.then(() => {
-		// 			navigate('/');
-		// 		})
-		// 		.catch((error) => {
-		// 			setConnectMessage(error);
-		// 		});
-		// });
 	};
 
 	return (
-		<SignInView
-			signInSchema={signInSchema}
-			connectMessage={connectMessage}
-			makeLogin={makeLogin}
-		/>
+		<LoadingOverlay active={loading} spinner text="Carregando...">
+			<SignInView
+				signInSchema={signInSchema}
+				connectMessage={connectMessage}
+				makeLogin={makeLogin}
+			/>
+		</LoadingOverlay>
 	);
 };
 

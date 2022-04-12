@@ -1,9 +1,9 @@
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
-
+import Alert from '../../Components/Alert/Alert';
 import image from '../../Assets/login.jpg';
 
-const SignUpView = ({ signUpFunction, signUpSchema }) => {
+const SignUpView = ({ signUpFunction, signUpSchema, connectMessage }) => {
 	return (
 		<>
 			<div className="h-screen bg-gray-200 flex flex-col xl:flex-row-reverse xl:items-center">
@@ -127,6 +127,12 @@ const SignUpView = ({ signUpFunction, signUpSchema }) => {
 										</div>
 									) : null}
 								</div>
+								{connectMessage ? (
+									<Alert
+										title="Oops, não foi possível conectar"
+										subTitle={connectMessage}
+									/>
+								) : null}
 								<button
 									type="submit"
 									className="bg-blue-500 w-3/4 mb-16 rounded-lg h-12 text-white font-bold text-xl xl:mb-0"

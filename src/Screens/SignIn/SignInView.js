@@ -5,7 +5,6 @@ import background from '../../Assets/login.jpg';
 import loginImage from '../../Assets/img_login_.png';
 
 const SignInView = ({ signInSchema, makeLogin, connectMessage }) => {
-	debugger
 	const navigate = useNavigate();
 	return (
 		<>
@@ -34,12 +33,7 @@ const SignInView = ({ signInSchema, makeLogin, connectMessage }) => {
 									src={loginImage}
 									alt="Logo da carteira"
 								/>
-								{connectMessage ? (
-									<Alert
-										title="Não foi possivel conectar"
-										subTitle={connectMessage}
-									/>
-								) : null}
+
 								<div className=" flex flex-col justify-center items-center w-screen xl:w-full">
 									<Field
 										name="cpf"
@@ -70,6 +64,12 @@ const SignInView = ({ signInSchema, makeLogin, connectMessage }) => {
 										</div>
 									) : null}
 								</div>
+								{connectMessage && (
+									<Alert
+										title="Oops, não foi possível conectar"
+										subTitle={connectMessage}
+									/>
+								)}
 								<button
 									type="submit"
 									className="bg-blue-500 w-3/4 rounded-lg h-12 text-white font-bold text-xl"
