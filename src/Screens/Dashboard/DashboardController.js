@@ -1,14 +1,15 @@
 import React, { useContext, useEffect } from 'react';
 import useAPI from '../../Services/APIs/Common/useAPI';
-import preference from '../../Services/APIs/Preference/Preference';
+import store from '../../Services/APIs/Store/Store';
 import balanceWallet from '../../Services/APIs/Balance/Balance';
 import DashboardView from './DashboardView';
 import LoadingOverlay from 'react-loading-overlay';
 import AuthContext from '../../Contexts/Auth';
 
 const DashboardController = () => {
-	const { user } = useContext(AuthContext);
-	const getPreferencesAPI = useAPI(preference.getAllStorePreference);
+	const { user, signOut } = useContext(AuthContext);
+
+	const getPreferencesAPI = useAPI(store.getAllStorePreference);
 	const getBalanceAPI = useAPI(balanceWallet.getBalance);
 
 	// function getBalanceWallet() {
@@ -24,14 +25,14 @@ const DashboardController = () => {
 	// 	});
 	// }
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => {
 		getBalance();
 		getStorePreferences();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [user]);
 
-	const getStorePreferences = async () => {
-		await getPreferencesAPI.request(user);
+	const getStorePreferences = async () => {	
+		await getPreferencesAPI.request(user);		
 	};
 	const getBalance = async () => {
 		await getBalanceAPI.request(user);
@@ -47,6 +48,7 @@ const DashboardController = () => {
 				storePreference={getPreferencesAPI.data}
 				infoPreference={getPreferencesAPI.error}
 				balanceWallet={getBalanceAPI.data}
+				signOut={signOut}
 			/>
 		</LoadingOverlay>
 	);

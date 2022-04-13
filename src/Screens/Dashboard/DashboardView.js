@@ -2,11 +2,21 @@ import React from 'react';
 import Alert from '../../Components/Alert/Alert';
 import BalanceWallet from '../../Components/BalanceWallet/BalanceWallet';
 import DialogRemove from '../../Components/DialogRemove/DialogRemove';
-import DialogAddPreferences from '../../Components/DialogAddPreferences/DialogAddPreferences';
 import AppBar from '../../Components/AppBar/AppBar';
+import AddPreferences from '../AddPreferences/AddPreferencesController';
 import './Dashboard.css';
 
-const DashboardView = ({ storePreference, infoPreference, balanceWallet }) => {
+const DashboardView = ({
+	storePreference,
+	infoPreference,
+	balanceWallet,
+	stores,
+	signOut
+}) => {
+	
+	if (infoPreference && infoPreference.indexOf('404') > -1) {
+		signOut();
+	}
 	const alert = {
 		title: 'Lojas não localizadas',
 		subTitle:
@@ -15,7 +25,7 @@ const DashboardView = ({ storePreference, infoPreference, balanceWallet }) => {
 	};
 	return (
 		<div className="h-full bg-gray-100">
-			<AppBar />
+			<AppBar signOut={signOut} />
 			<div className="lg:text-center bg-blue-500 ">
 				<div className="hidden md:block">
 					<hr className="mx-3" />
@@ -83,7 +93,7 @@ const DashboardView = ({ storePreference, infoPreference, balanceWallet }) => {
 					)}
 				</ul>
 			</div>
-			<DialogAddPreferences className="fixed" />
+			<AddPreferences className="fixed" />
 		</div>
 	);
 };
