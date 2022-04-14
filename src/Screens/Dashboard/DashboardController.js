@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
 import useAPI from '../../Services/APIs/Common/useAPI';
 import store from '../../Services/APIs/Store/Store';
@@ -12,23 +13,9 @@ const DashboardController = () => {
 	const getPreferencesAPI = useAPI(store.getAllStorePreference);
 	const getBalanceAPI = useAPI(balanceWallet.getBalance);
 
-	// function getBalanceWallet() {
-	// 	return new Promise(() => {
-	// 		getBalanceGetAPI
-	// 			.requestPromise()
-	// 			.then((info) => {
-	// 				console.log(info);
-	// 			})
-	// 			.catch((error) => {
-	// 				console.log(error);
-	// 			});
-	// 	});
-	// }
-
-	useEffect(() => {
+	useEffect(() => {		
 		getBalance();
-		getStorePreferences();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		getStorePreferences();		
 	}, [user]);
 
 	const getStorePreferences = async () => {	
@@ -40,12 +27,12 @@ const DashboardController = () => {
 
 	return (
 		<LoadingOverlay
-			active={!!getPreferencesAPI.loading}
+			active={!!getPreferencesAPI.loading }
 			spinner
 			text="Carregando..."
 		>
 			<DashboardView
-				storePreference={getPreferencesAPI.data}
+				storesPreference={getPreferencesAPI.data}
 				infoPreference={getPreferencesAPI.error}
 				balanceWallet={getBalanceAPI.data}
 				signOut={signOut}

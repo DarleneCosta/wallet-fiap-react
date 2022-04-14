@@ -9,13 +9,15 @@ function classNames(...classes) {
 }
 
 export default function DialogAddPreferences({
+	handleClickYes,
 	cancelButtonRef,
 	handleClickOpen,
 	open,
 	setOpen,
 	selected,
 	setSelected,
-	stores
+	stores,
+	loading
 }) {
 	return (
 		<div>
@@ -66,14 +68,17 @@ export default function DialogAddPreferences({
 							leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
 						>
 							<div className="relative inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-								<div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+								<div
+									className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4"
+									style={{ height: '180px' }}
+								>
 									<div className="sm:flex sm:items-start">
 										<div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
 											<Dialog.Title
 												as="h3"
-												className="text-lg leading-6 font-medium text-gray-900"
+												className="text-lg leading-6 font-medium text-gray-900 pb-2"
 											>
-												Adicionar em sua lista
+												Adicionar em sua lista?
 											</Dialog.Title>
 											<Listbox
 												value={selected}
@@ -82,7 +87,7 @@ export default function DialogAddPreferences({
 												{({ open }) => (
 													<>
 														<div className="mt-1 relative z-0">
-															<Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+															<Listbox.Button className="relative w-full  bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
 																<span className="flex items-center">
 																	<img
 																		src={
@@ -206,7 +211,7 @@ export default function DialogAddPreferences({
 									<button
 										type="button"
 										className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-600 text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:ml-3 sm:w-auto sm:text-sm"
-										onClick={() => setOpen(false)}
+										onClick={handleClickYes}
 									>
 										Sim
 									</button>

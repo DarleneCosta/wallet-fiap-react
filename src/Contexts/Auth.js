@@ -15,9 +15,9 @@ export const AuthProvider = (React.FC = ({ children }) => {
 		const storagedSession = localStorage.getItem('@wallet:session');
 		
 		if (storagedSession) {
-			let session = JSON.parse(storagedSession)
-			setUser(session.cpf);
+			let session = JSON.parse(storagedSession)			
 			api.defaults.headers.Authorization = `Bearer ${session.token}`;
+			setUser(session.cpf);
 		}
 		setLoading(false);
 	}, []);
@@ -25,9 +25,10 @@ export const AuthProvider = (React.FC = ({ children }) => {
 	async function signInto(userObject) {
 		const response = await useSignIn.requestPromise(userObject);
 		
-		setUser(response.cpf);
+		
 		localStorage.setItem('@wallet:session', JSON.stringify(response));
 		api.defaults.headers.Authorization = `Bearer ${response.token}`;
+		setUser(response.cpf);
 		setLoading(false);
 	}
 	function signOut() {

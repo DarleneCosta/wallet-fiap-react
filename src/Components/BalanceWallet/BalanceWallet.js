@@ -16,7 +16,7 @@ export default function Saldo({ value }) {
 						}`}
 						style={{ width: '150px' }}
 					>
-						{isVisible ? value : '***'}
+						{isVisible ? value.toFixed(2) : '***'}
 					</div>
 					<div>
 						<button
