@@ -7,7 +7,6 @@ function classNames(...classes) {
 }
 
 const AppBar = ({ signOut }) => {
-	
 	const navigation = [
 		{ name: 'Favoritas', current: true },
 		{ name: 'Carteira', current: false },
@@ -75,7 +74,7 @@ const AppBar = ({ signOut }) => {
 						<Disclosure.Panel className="md:hidden">
 							<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
 								{navigation.map((item) => (
-									<Disclosure.Button
+									<button
 										key={item.name}
 										as="a"
 										href={item.href}
@@ -88,9 +87,12 @@ const AppBar = ({ signOut }) => {
 										aria-current={
 											item.current ? 'page' : undefined
 										}
+										onClick={() => {
+											if (item.name === 'Sair') signOut();
+										}}
 									>
 										{item.name}
-									</Disclosure.Button>
+									</button>
 								))}
 							</div>
 						</Disclosure.Panel>
