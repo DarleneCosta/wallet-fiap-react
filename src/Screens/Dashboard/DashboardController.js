@@ -5,6 +5,7 @@ import store from '../../Services/APIs/Store/Store';
 import balanceWallet from '../../Services/APIs/Balance/Balance';
 import DashboardView from './DashboardView';
 import AuthContext from '../../Contexts/Auth';
+import LoadingOverlay from 'react-loading-overlay';
 
 const DashboardController = () => {
 	const { user, signOut } = useContext(AuthContext);
@@ -39,14 +40,21 @@ const DashboardController = () => {
 	};
 
 	return (
-		<DashboardView
-			storesPreference={getPreferencesAPI.data}
-			infoPreference={getPreferencesAPI.error}
-			balanceWallet={getBalanceAPI.data}
-			signOut={signOut}
-			setIdRemove={setIdRemove}
-			setReloadPreferences={setReloadPreferences}
-		/>
+		<LoadingOverlay
+			active={!!getBalanceAPI.loading || !!getPreferencesAPI.loading}
+			spinner
+			text="Aguarde..."
+			className="h-full"
+		>
+			<DashboardView
+				storesPreference={getPreferencesAPI.data}
+				infoPreference={getPreferencesAPI.error}
+				balanceWallet={getBalanceAPI.data}
+				signOut={signOut}
+				setIdRemove={setIdRemove}
+				setReloadPreferences={setReloadPreferences}
+			/>
+		</LoadingOverlay>
 	);
 };
 

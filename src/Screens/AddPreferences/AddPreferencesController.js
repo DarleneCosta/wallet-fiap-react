@@ -34,7 +34,6 @@ const AddPreferences = ({ user , confirmReload}) => {
 			active={!!getStoreAPI.loading || !!addPreferenceAPI.loading}
 			spinner
 			text="Aguarde"
-			className="h-screen"
 		>
 			<AddPreferencesView
 				handleClickOpen={handleClickOpen}
