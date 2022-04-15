@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import Alert from '../../Components/Alert/Alert';
 import background from '../../Assets/login.jpg';
-import loginImage from '../../Assets/img_login_.png';
+import loginImage from '../../Assets/img_login.png';
 
 const SignInView = ({ signInSchema, makeLogin, connectMessage }) => {
 	const navigate = useNavigate();
