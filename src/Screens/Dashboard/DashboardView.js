@@ -6,12 +6,14 @@ import AppBar from '../../Components/AppBar/AppBar';
 import AddPreferences from '../AddPreferences/AddPreferencesController';
 import './Dashboard.css';
 
+
 const DashboardView = ({
 	storesPreference,
 	infoPreference,
 	balanceWallet,
 	stores,
 	signOut
+
 }) => {
 	if (infoPreference && infoPreference.indexOf('404') > -1) {
 		signOut();
@@ -23,7 +25,7 @@ const DashboardView = ({
 			'Utilize o botão abaixo para adicionar suas lojas preferidas'
 	};
 	return (
-		<div className="h-screen  bg-gray-100">
+		<div className=" bg-gray-100">
 			<AppBar signOut={signOut} />
 			<div className="lg:text-center bg-blue-500 ">
 				<div className="hidden md:block">
@@ -75,12 +77,12 @@ const DashboardView = ({
 											className="mx-auto object-cover rounded-full h-10 w-10 "
 										/>
 									</div>
-									<div className="flex-1 pl-5 md:mr-16">
+									<div className="flex-1 pl-6 ">
 										<div className="font-medium dark:text-white">
 											{preference.name}
 										</div>
 									</div>
-									<div className="text-gray-600 dark:text-gray-200 text-md ">
+									<div className="text-gray-600 dark:text-gray-200 text-md md:mr-20 ">
 										{preference.percent} %
 									</div>
 									<div className="w-24 text-right flex justify-end">

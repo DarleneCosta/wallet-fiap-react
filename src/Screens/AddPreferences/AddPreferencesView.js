@@ -2,8 +2,6 @@ import { Fragment } from 'react';
 import { Dialog, Transition, Listbox } from '@headlessui/react';
 import { PlusIcon } from '@heroicons/react/outline';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
-
-
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
 }
@@ -16,11 +14,11 @@ export default function DialogAddPreferences({
 	setOpen,
 	selected,
 	setSelected,
-	stores,
-	loading
+	stores
+	
 }) {
 	return (
-		<div>
+		<div >
 			<div className="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
 				<button
 					onClick={handleClickOpen}

@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import useAPI from '../../Services/APIs/Common/useAPI';
 import store from '../../Services/APIs/Store/Store';
 import AddPreferencesView from './AddPreferencesView';
-import Loading from '../../Components/Loading/Loading';
+import LoadingOverlay from 'react-loading-overlay';
 
 const AddPreferences = ({ user }) => {
 	const [open, setOpen] = useState(false);
@@ -16,9 +16,9 @@ const AddPreferences = ({ user }) => {
 		setOpen(true);
 	};
 	const handleClickYes = async () => {
-		debugger
 		if (!selected) return;
 		await addPreferenceAPI.request(user, selected.id);
+		setOpen(false);
 	};
 
 	const getStore = async () => {
@@ -28,20 +28,24 @@ const AddPreferences = ({ user }) => {
 		}
 	};
 
-	if (getStoreAPI.loading) {
-		return <Loading />;
-	}
 	return (
-		<AddPreferencesView
-			handleClickOpen={handleClickOpen}
-			open={open}
-			selected={selected}
-			cancelButtonRef={cancelButtonRef}
-			setOpen={setOpen}
-			setSelected={setSelected}
-			stores={getStoreAPI.data}
-			handleClickYes={handleClickYes}
-		/>
+		<LoadingOverlay
+			active={!!getStoreAPI.loading || !!addPreferenceAPI.loading}
+			spinner
+			text="Aguarde"
+			className="h-screen"
+		>
+			<AddPreferencesView
+				handleClickOpen={handleClickOpen}
+				open={open}
+				selected={selected}
+				cancelButtonRef={cancelButtonRef}
+				setOpen={setOpen}
+				setSelected={setSelected}
+				stores={getStoreAPI.data}
+				handleClickYes={handleClickYes}
+			/>
+		</LoadingOverlay>
 	);
 };
 

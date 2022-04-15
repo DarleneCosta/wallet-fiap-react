@@ -4,7 +4,6 @@ import useAPI from '../../Services/APIs/Common/useAPI';
 import store from '../../Services/APIs/Store/Store';
 import balanceWallet from '../../Services/APIs/Balance/Balance';
 import DashboardView from './DashboardView';
-import LoadingOverlay from 'react-loading-overlay';
 import AuthContext from '../../Contexts/Auth';
 
 const DashboardController = () => {
@@ -26,18 +25,13 @@ const DashboardController = () => {
 	};
 
 	return (
-		<LoadingOverlay
-			active={!!getPreferencesAPI.loading }
-			spinner
-			text="Carregando..."
-		>
+	
 			<DashboardView
 				storesPreference={getPreferencesAPI.data}
 				infoPreference={getPreferencesAPI.error}
 				balanceWallet={getBalanceAPI.data}
 				signOut={signOut}
 			/>
-		</LoadingOverlay>
 	);
 };
 
