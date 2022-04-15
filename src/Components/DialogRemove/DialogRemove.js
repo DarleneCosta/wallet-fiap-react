@@ -2,7 +2,7 @@ import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { ExclamationIcon, XIcon } from '@heroicons/react/outline';
 
-export default function Confirm() {
+export default function Confirm({  preference, idRemove }) {
 	const [open, setOpen] = useState(false);
 
 	const cancelButtonRef = useRef(null);
@@ -12,9 +12,8 @@ export default function Confirm() {
 	};
 
 	return (
-		<div >
+		<div>
 			<div className="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
-			
 				<button
 					type="button"
 					onClick={handleClickOpen}
@@ -76,7 +75,8 @@ export default function Confirm() {
 											</Dialog.Title>
 											<div className="mt-2">
 												<p className="text-sm text-gray-500">
-													Remove a empresa da sua lista de favoritas?
+													Remover {preference.name} da
+													sua lista de favoritas?
 												</p>
 											</div>
 										</div>
@@ -86,14 +86,20 @@ export default function Confirm() {
 									<button
 										type="button"
 										className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-600 text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:ml-3 sm:w-auto sm:text-sm"
-										onClick={() => setOpen(false)}
+										onClick={() => {
+											idRemove(preference.id);
+											setOpen(false);
+										}}
 									>
 										Sim
 									</button>
 									<button
 										type="button"
 										className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-										onClick={() => setOpen(false)}
+										onClick={() => {
+											idRemove(null);
+											setOpen(false);
+										}}
 										ref={cancelButtonRef}
 									>
 										Não

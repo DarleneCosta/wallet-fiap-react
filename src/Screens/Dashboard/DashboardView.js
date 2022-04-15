@@ -6,14 +6,14 @@ import AppBar from '../../Components/AppBar/AppBar';
 import AddPreferences from '../AddPreferences/AddPreferencesController';
 import './Dashboard.css';
 
-
 const DashboardView = ({
 	storesPreference,
 	infoPreference,
 	balanceWallet,
 	stores,
-	signOut
-
+	signOut,
+	setIdRemove,
+	setReloadPreferences
 }) => {
 	if (infoPreference && infoPreference.indexOf('404') > -1) {
 		signOut();
@@ -24,6 +24,7 @@ const DashboardView = ({
 			infoPreference ||
 			'Utilize o botão abaixo para adicionar suas lojas preferidas'
 	};
+
 	return (
 		<div className=" bg-gray-100">
 			<AppBar signOut={signOut} />
@@ -87,7 +88,8 @@ const DashboardView = ({
 									</div>
 									<div className="w-24 text-right flex justify-end">
 										<DialogRemove
-											idPreference={preference.id}
+											idRemove={setIdRemove}
+											preference={preference}
 										/>
 									</div>
 								</div>
@@ -99,6 +101,7 @@ const DashboardView = ({
 			<AddPreferences
 				className="fixed"
 				user={balanceWallet && balanceWallet.user.cpf}
+				confirmReload={setReloadPreferences}
 			/>
 		</div>
 	);
