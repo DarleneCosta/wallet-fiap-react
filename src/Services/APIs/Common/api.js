@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const ApiConn = axios.create({
-	baseURL: 'http://localhost:8080/api' //process.env.REACT_APP_API_URL 
+	baseURL: 'http://18.231.123.143' //process.env.REACT_APP_API_URL
 });
 
 export default ApiConn;
