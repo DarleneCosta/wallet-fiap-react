@@ -13,11 +13,13 @@ const DashboardController = () => {
 	const deletePreferenceAPI = useAPI(store.deleteStorePreference);
 	const getPreferencesAPI = useAPI(store.getAllStorePreference);
 	const getBalanceAPI = useAPI(balanceWallet.getBalance);
+	const getStoreAPI = useAPI(store.getAllStore);
 
 	const [idRemove, setIdRemove] = useState(null);
 	const [reloadPreferences, setReloadPreferences] = useState(false);
 
 	useEffect(() => {
+		getStore();
 		getBalance();
 		getStorePreferences();
 	}, [reloadPreferences]);
@@ -31,6 +33,9 @@ const DashboardController = () => {
 	};
 	const getBalance = async () => {
 		await getBalanceAPI.request(user);
+	};
+	const getStore = async () => {
+		await getStoreAPI.request();
 	};
 	const deletePreference = async () => {
 		if (idRemove) {
@@ -47,6 +52,7 @@ const DashboardController = () => {
 			className="h-full"
 		>
 			<DashboardView
+				stores={getStoreAPI.data}
 				storesPreference={getPreferencesAPI.data}
 				infoPreference={getPreferencesAPI.error}
 				balanceWallet={getBalanceAPI.data}

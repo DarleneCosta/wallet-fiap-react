@@ -4,34 +4,28 @@ import store from '../../Services/APIs/Store/Store';
 import AddPreferencesView from './AddPreferencesView';
 import LoadingOverlay from 'react-loading-overlay';
 
-const AddPreferences = ({ user , confirmReload}) => {
+const AddPreferences = ({ user, confirmReload, stores }) => {
 	const [open, setOpen] = useState(false);
 	const [selected, setSelected] = useState(null);
-	const getStoreAPI = useAPI(store.getAllStore);
+
 	const addPreferenceAPI = useAPI(store.setStorePreference);
 	const cancelButtonRef = useRef(null);
 
 	const handleClickOpen = async () => {
-		await getStore();
+		setSelected(stores[0]);
 		setOpen(true);
 	};
+
 	const handleClickYes = async () => {
 		if (!selected) return;
 		await addPreferenceAPI.request(user, selected.id);
-		confirmReload(true)
+		confirmReload(true);
 		setOpen(false);
-	};
-
-	const getStore = async () => {
-		await getStoreAPI.request();
-		if (getStoreAPI.data.length > 0) {
-			setSelected(getStoreAPI.data[0]);
-		}
 	};
 
 	return (
 		<LoadingOverlay
-			active={!!getStoreAPI.loading || !!addPreferenceAPI.loading}
+			active={!!addPreferenceAPI.loading}
 			spinner
 			text="Aguarde"
 		>
@@ -42,7 +36,7 @@ const AddPreferences = ({ user , confirmReload}) => {
 				cancelButtonRef={cancelButtonRef}
 				setOpen={setOpen}
 				setSelected={setSelected}
-				stores={getStoreAPI.data}
+				stores={stores}
 				handleClickYes={handleClickYes}
 			/>
 		</LoadingOverlay>

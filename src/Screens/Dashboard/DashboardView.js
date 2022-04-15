@@ -53,13 +53,11 @@ const DashboardView = ({
 					</div>
 				</div>
 			</div>
-
 			<div className="lg:text-center bg-blue-500 p-5">
 				<p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
 					Suas lojas favoritas
 				</p>
 			</div>
-
 			<div className="w-auto flex flex-col px-8 py-5 justify-center bg-gray-100 ">
 				<ul className="flex flex-col">
 					{!storesPreference || storesPreference.length === 0 ? (
@@ -98,11 +96,14 @@ const DashboardView = ({
 					)}
 				</ul>
 			</div>
-			<AddPreferences
-				className="fixed"
-				user={balanceWallet && balanceWallet.user.cpf}
-				confirmReload={setReloadPreferences}
-			/>
+			{stores && stores.length > 0 && (
+				<AddPreferences
+					className="fixed"
+					user={balanceWallet && balanceWallet.user.cpf}
+					confirmReload={setReloadPreferences}
+					stores={stores}
+				/>
+			)}
 		</div>
 	);
 };
