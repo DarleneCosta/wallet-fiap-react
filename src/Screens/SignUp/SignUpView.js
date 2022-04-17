@@ -6,7 +6,7 @@ import image from '../../Assets/login.jpg';
 const SignUpView = ({ signUpFunction, signUpSchema, connectMessage }) => {
 	return (
 		<>
-			<div className="h-screen bg-gray-200 flex flex-col xl:flex-row-reverse xl:items-center">
+			<div className="bg-gray-200 flex flex-col xl:flex-row-reverse xl:items-center ">
 				<div
 					id="logo"
 					className="flex justify-center content-center xl:flex xl:visible"
@@ -19,7 +19,7 @@ const SignUpView = ({ signUpFunction, signUpSchema, connectMessage }) => {
 				</div>
 				<div
 					id="form"
-					className="w-screen h-screen flex flex-col justify-center content-center"
+					className="w-screen flex flex-col justify-center content-center"
 				>
 					<Formik
 						initialValues={{
@@ -36,7 +36,7 @@ const SignUpView = ({ signUpFunction, signUpSchema, connectMessage }) => {
 						}}
 					>
 						{({ errors, touched }) => (
-							<Form className="flex flex-col justify-center items-center space-y-10 xl:space-y-20 xl:w-full">
+							<Form className="flex flex-col justify-center items-center space-y-10 xl:space-y-15 xl:w-full mb-10 h-full ">
 								<div className=" flex flex-col justify-center items-center w-screen xl:w-full">
 									<Field
 										className="w-3/4 h-8 bg-transparent rounded-none border-b-2 border-zinc-700 focus:outline-none placeholder:font-semibold placeholder:text-zinc-600"

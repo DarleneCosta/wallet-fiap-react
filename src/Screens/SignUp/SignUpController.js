@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import LoadingOverlay from 'react-loading-overlay';
 
-
 const SignUpController = () => {
 	const [isActive, setIsActive] = useState(false);
 	const [connectMessage, setConnectMessage] = useState('');
@@ -48,7 +47,11 @@ const SignUpController = () => {
 	};
 
 	return (
-		<LoadingOverlay active={isActive} spinner text="Carregando...">
+		<LoadingOverlay
+			active={isActive}
+			spinner
+			text="Carregando..."
+		>
 			<SignUpView
 				signUpFunction={doSignUp}
 				signUpSchema={signUpSchema}
