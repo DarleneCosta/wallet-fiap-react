@@ -12,7 +12,7 @@ const DashboardView = ({
 	balanceWallet,
 	stores,
 	signOut,
-	setIdRemove,
+	removePreference,
 	setReloadPreferences
 }) => {
 	if (infoPreference && infoPreference.indexOf('404') > -1) {
@@ -86,7 +86,7 @@ const DashboardView = ({
 									</div>
 									<div className="w-24 text-right flex justify-end">
 										<DialogRemove
-											idRemove={setIdRemove}
+											removePreference={removePreference}
 											preference={preference}
 										/>
 									</div>

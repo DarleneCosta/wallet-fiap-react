@@ -10,12 +10,11 @@ import LoadingOverlay from 'react-loading-overlay';
 const DashboardController = () => {
 	const { user, signOut } = useContext(AuthContext);
 
-	const deletePreferenceAPI = useAPI(store.deleteStorePreference);
+	const removePreferenceAPI = useAPI(store.deleteStorePreference);
 	const getPreferencesAPI = useAPI(store.getAllStorePreference);
 	const getBalanceAPI = useAPI(balanceWallet.getBalance);
 	const getStoreAPI = useAPI(store.getAllStore);
 
-	const [idRemove, setIdRemove] = useState(null);
 	const [reloadPreferences, setReloadPreferences] = useState(false);
 
 	useEffect(() => {
@@ -24,9 +23,6 @@ const DashboardController = () => {
 		getStorePreferences();
 	}, [reloadPreferences]);
 
-	useEffect(() => {
-		deletePreference();
-	}, [idRemove]);
 
 	const getStorePreferences = async () => {
 		await getPreferencesAPI.request(user);
@@ -37,9 +33,9 @@ const DashboardController = () => {
 	const getStore = async () => {
 		await getStoreAPI.request();
 	};
-	const deletePreference = async () => {
+	const removePreference = async (idRemove) => {
 		if (idRemove) {
-			await deletePreferenceAPI.request(user, idRemove);
+			await removePreferenceAPI.request(user, idRemove);
 			await getStorePreferences();
 		}
 	};
@@ -57,7 +53,7 @@ const DashboardController = () => {
 				infoPreference={getPreferencesAPI.error}
 				balanceWallet={getBalanceAPI.data}
 				signOut={signOut}
-				setIdRemove={setIdRemove}
+				removePreference={removePreference}
 				setReloadPreferences={setReloadPreferences}
 			/>
 		</LoadingOverlay>
