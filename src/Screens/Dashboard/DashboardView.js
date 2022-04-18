@@ -13,7 +13,7 @@ const DashboardView = ({
 	stores,
 	signOut,
 	removePreference,
-	setReloadPreferences
+	setIdSelectedReload
 }) => {
 	if (infoPreference && infoPreference.indexOf('404') > -1) {
 		signOut();
@@ -100,7 +100,7 @@ const DashboardView = ({
 				<AddPreferences
 					className="fixed"
 					user={balanceWallet && balanceWallet.user.cpf}
-					confirmReload={setReloadPreferences}
+					setIdSelected={setIdSelectedReload}
 					stores={stores}
 				/>
 			)}

@@ -4,7 +4,7 @@ import store from '../../Services/APIs/Store/Store';
 import AddPreferencesView from './AddPreferencesView';
 import LoadingOverlay from 'react-loading-overlay';
 
-const AddPreferences = ({ user, confirmReload, stores }) => {
+const AddPreferences = ({ user, setIdSelected, stores }) => {
 	const [open, setOpen] = useState(false);
 	const [selected, setSelected] = useState(null);
 
@@ -19,7 +19,7 @@ const AddPreferences = ({ user, confirmReload, stores }) => {
 	const handleClickYes = async () => {
 		if (!selected) return;
 		await addPreferenceAPI.request(user, selected.id);
-		confirmReload(true);
+		setIdSelected(selected.id);
 		setOpen(false);
 	};
 

@@ -15,13 +15,13 @@ const DashboardController = () => {
 	const getBalanceAPI = useAPI(balanceWallet.getBalance);
 	const getStoreAPI = useAPI(store.getAllStore);
 
-	const [reloadPreferences, setReloadPreferences] = useState(false);
+	const [idSelectedReload, setIdSelectedReload] = useState(-1);
 
 	useEffect(() => {
 		getStore();
 		getBalance();
 		getStorePreferences();
-	}, [reloadPreferences]);
+	}, [idSelectedReload]);
 
 
 	const getStorePreferences = async () => {
@@ -54,7 +54,7 @@ const DashboardController = () => {
 				balanceWallet={getBalanceAPI.data}
 				signOut={signOut}
 				removePreference={removePreference}
-				setReloadPreferences={setReloadPreferences}
+				setIdSelectedReload={setIdSelectedReload}
 			/>
 		</LoadingOverlay>
 	);
