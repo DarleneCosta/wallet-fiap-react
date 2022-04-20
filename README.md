@@ -16,5 +16,6 @@ Idéia principal do projeto é uma solução é que o cliente selecione suas loj
 docker-compose build
 docker-compose up
 
-"http://localhost"
+"http://localhost" => front
+"http://localhost/api" => back
 

@@ -18,11 +18,8 @@ const DashboardController = () => {
 	const [idSelectedReload, setIdSelectedReload] = useState(-1);
 
 	useEffect(() => {
-		getStore();
-		getBalance();
 		getStorePreferences();
 	}, [idSelectedReload]);
-
 
 	const getStorePreferences = async () => {
 		await getPreferencesAPI.request(user);
@@ -36,10 +33,16 @@ const DashboardController = () => {
 	const removePreference = async (idRemove) => {
 		if (idRemove) {
 			await removePreferenceAPI.request(user, idRemove);
-			await getStorePreferences();
+			if (idRemove === idSelectedReload) setIdSelectedReload(-1);
+			else setIdSelectedReload(idRemove);
 		}
 	};
 
+	useEffect(() => {
+		getStore();
+		getBalance();
+	}, []);
+	
 	return (
 		<LoadingOverlay
 			active={!!getBalanceAPI.loading || !!getPreferencesAPI.loading}

@@ -27,9 +27,7 @@ export default (apiFunc) => {
 					.then((result) => {
 						resolve(result.data);
 					})
-					.catch((error) => {
-						console.log(error.response);
-						console.log(error.message);
+					.catch((error) => {					
 						reject(error);
 					});
 			} catch (err) {
